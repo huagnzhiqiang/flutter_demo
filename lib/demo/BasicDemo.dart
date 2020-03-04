@@ -16,11 +16,15 @@ class BasicDemo extends StatelessWidget {
       decoration: BoxDecoration(
           color: Colors.white12,
           image: DecorationImage(
-              image: NetworkImage(
-                  "http://b-ssl.duitang.com/uploads/item/201410/09/20141009224754_AswrQ.jpeg"),
-              colorFilter: ColorFilter.mode(Colors.grey.withOpacity(0.9), BlendMode.hardLight),
-              fit: BoxFit.cover)),
-
+            //重复
+            repeat: ImageRepeat.repeat,
+            //对齐
+            alignment: Alignment.topCenter,
+            image: NetworkImage(
+                "http://b-ssl.duitang.com/uploads/item/201410/09/20141009224754_AswrQ.jpeg"),
+            colorFilter: ColorFilter.mode(
+                Colors.grey.withOpacity(0.9), BlendMode.hardLight),
+          )),
       child: Row(
         children: <Widget>[
           Container(

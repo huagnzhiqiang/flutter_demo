@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'demo/BasicDemo.dart';
 import 'demo/BottomNavigationBarDemo.dart';
 import 'demo/DraberMode.dart';
+import 'demo/LayoutDemo.dart';
 import 'demo/ListViewDemo.dart';
 
 //主入口
@@ -82,11 +83,7 @@ class Home extends StatelessWidget {
           ListViewDemo(),
           BasicDemo(),
 //            Icon(Icons.accessibility,size: 120,color: Colors.blue,),
-            Icon(
-              Icons.accessibility,
-              size: 120,
-              color: Colors.lightGreen,
-            ),
+           LayoutDemo(),
           ],
         ),
 
