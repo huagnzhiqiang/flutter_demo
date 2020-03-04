@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'demo/DraberMode.dart';
 import 'demo/ListViewDemo.dart';
 
 //主入口
@@ -95,55 +96,7 @@ class Home extends StatelessWidget {
           ),
 
           //抽屉
-          drawer: Drawer(
-            child: ListView(
-              children: <Widget>[
-                DrawerHeader(
-                  child: Text("小强"),
-                  decoration: BoxDecoration(color: Colors.grey[100]),
-                ),
-                ListTile(
-                  title: Text(
-                    "消息",
-                    textAlign: TextAlign.right,
-                  ),
-                  trailing: Icon(
-                    Icons.message,
-                    size: 22,
-                    color: Colors.black26,
-                  ),
-                  //点击关闭按钮
-                  onTap: () => Navigator.pop(context),
-                ),
-                ListTile(
-                  title: Text(
-                    "喜欢",
-                    textAlign: TextAlign.right,
-                  ),
-                  trailing: Icon(
-                    Icons.favorite,
-                    size: 22,
-                    color: Colors.black26,
-                  ),
-                  //点击关闭按钮
-                  onTap: () => Navigator.pop(context),
-                ),
-                ListTile(
-                  title: Text(
-                    "设置",
-                    textAlign: TextAlign.right,
-                  ),
-                  trailing: Icon(
-                    Icons.settings,
-                    size: 22,
-                    color: Colors.black26,
-                  ),
-                  //点击关闭按钮
-                  onTap: () => Navigator.pop(context),
-                ),
-              ],
-            ),
-          ),
+          drawer: DrawerMode(),
         ));
   }
 }
