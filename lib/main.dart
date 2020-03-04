@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'demo/BasicDemo.dart';
 import 'demo/BottomNavigationBarDemo.dart';
 import 'demo/DraberMode.dart';
 import 'demo/ListViewDemo.dart';
@@ -79,11 +80,8 @@ class Home extends StatelessWidget {
         body: TabBarView(
           children: <Widget>[
           ListViewDemo(),
-            Icon(
-              Icons.accessibility,
-              size: 120,
-              color: Colors.blue,
-            ),
+          BasicDemo(),
+//            Icon(Icons.accessibility,size: 120,color: Colors.blue,),
             Icon(
               Icons.accessibility,
               size: 120,
@@ -101,3 +99,4 @@ class Home extends StatelessWidget {
     );
   }
 }
+
