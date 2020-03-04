@@ -55,8 +55,8 @@ class Home extends StatelessWidget {
                 unselectedLabelColor: Colors.black45,
               ),
               //左上角的按钮
-              leading: IconButton(
-                  icon: Icon(Icons.menu), onPressed: () => debugPrint("菜单")),
+              //              leading: IconButton(
+              //                  icon: Icon(Icons.menu), onPressed: () => debugPrint("菜单")),
 
               //右上角的搜索
               actions: <Widget>[
@@ -112,6 +112,8 @@ class Home extends StatelessWidget {
                     size: 22,
                     color: Colors.black26,
                   ),
+                  //点击关闭按钮
+                  onTap: () => Navigator.pop(context),
                 ),
                 ListTile(
                   title: Text(
@@ -123,6 +125,8 @@ class Home extends StatelessWidget {
                     size: 22,
                     color: Colors.black26,
                   ),
+                  //点击关闭按钮
+                  onTap: () => Navigator.pop(context),
                 ),
                 ListTile(
                   title: Text(
@@ -134,6 +138,8 @@ class Home extends StatelessWidget {
                     size: 22,
                     color: Colors.black26,
                   ),
+                  //点击关闭按钮
+                  onTap: () => Navigator.pop(context),
                 ),
               ],
             ),
