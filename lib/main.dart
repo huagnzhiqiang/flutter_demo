@@ -95,14 +95,46 @@ class Home extends StatelessWidget {
           ),
 
           //抽屉
-          drawer: Container(
-            color: Colors.white,
-            padding: EdgeInsets.all(0.8),
-            child: Column(
-              //位置
-              mainAxisAlignment: MainAxisAlignment.center,
+          drawer: Drawer(
+            child: ListView(
               children: <Widget>[
-                Text("我爱你")
+                DrawerHeader(
+                  child: Text("小强"),
+                  decoration: BoxDecoration(color: Colors.grey[100]),
+                ),
+                ListTile(
+                  title: Text(
+                    "消息",
+                    textAlign: TextAlign.right,
+                  ),
+                  trailing: Icon(
+                    Icons.message,
+                    size: 22,
+                    color: Colors.black26,
+                  ),
+                ),
+                ListTile(
+                  title: Text(
+                    "喜欢",
+                    textAlign: TextAlign.right,
+                  ),
+                  trailing: Icon(
+                    Icons.favorite,
+                    size: 22,
+                    color: Colors.black26,
+                  ),
+                ),
+                ListTile(
+                  title: Text(
+                    "设置",
+                    textAlign: TextAlign.right,
+                  ),
+                  trailing: Icon(
+                    Icons.settings,
+                    size: 22,
+                    color: Colors.black26,
+                  ),
+                ),
               ],
             ),
           ),
