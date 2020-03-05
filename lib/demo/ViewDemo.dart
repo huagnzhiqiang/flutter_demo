@@ -17,8 +17,17 @@ class ViewDemo extends StatelessWidget {
 //      pageSnapping: false ,
       //方向会反过来 第一页变成最后一页
 //      reverse: true,
+      //控制方向
+      scrollDirection: Axis.horizontal,
+      //滑动事件
       onPageChanged: (currentPage) => debugPrint("当前页面-->$currentPage"),
-
+      controller: PageController(
+        //控制刚开始页面是第一个
+        initialPage: 1,
+        keepPage: true,
+        //控制占屏幕是百分比
+        viewportFraction: 0.8
+      ),
       children: <Widget>[
         Container(
           color: Colors.green,
