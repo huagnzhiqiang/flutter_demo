@@ -16,14 +16,24 @@ class SliverDemo extends StatelessWidget {
     return Scaffold(
       body: CustomScrollView(
         slivers: <Widget>[
-          SliverGrid(
-            delegate:
-                SliverChildBuilderDelegate(_builder, childCount: posts.length),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3, crossAxisSpacing: 8.0, mainAxisSpacing: 8.0),
-          )
+          SliverSafeArea(
+              sliver: SliverPadding(
+            padding: EdgeInsets.all(8),
+            sliver: SliverGridDemo(),
+          ))
         ],
       ),
+    );
+  }
+}
+
+class SliverGridDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SliverGrid(
+      delegate: SliverChildBuilderDelegate(_builder, childCount: posts.length),
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 3, crossAxisSpacing: 8.0, mainAxisSpacing: 8.0),
     );
   }
 
