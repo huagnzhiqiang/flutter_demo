@@ -19,9 +19,54 @@ class SliverDemo extends StatelessWidget {
           SliverSafeArea(
               sliver: SliverPadding(
             padding: EdgeInsets.all(8),
-            sliver: SliverGridDemo(),
+            sliver: SliverListDemo(),
           ))
         ],
+      ),
+    );
+  }
+}
+
+class SliverListDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SliverList(
+      delegate: SliverChildBuilderDelegate(_builder, childCount: posts.length),
+    );
+  }
+
+  Widget _builder(BuildContext context, int index) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: 10.0),
+      child: Material(
+        borderRadius: BorderRadius.circular(10.0),
+        elevation: 10,
+        shadowColor: Colors.green.withOpacity(0.5),
+        child: Container(
+            child: Stack(
+          children: <Widget>[
+            Image.network(
+              posts[index].imageUrl,
+              fit: BoxFit.cover,
+            ),
+            Positioned(
+                left: 10,
+                top: 10,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      posts[index].title,
+                      style: TextStyle(fontSize: 15),
+                    ),
+                    Text(
+                      posts[index].author,
+                      style: TextStyle(fontSize: 12),
+                    )
+                  ],
+                )),
+          ],
+        )),
       ),
     );
   }
