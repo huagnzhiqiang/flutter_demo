@@ -17,10 +17,19 @@ class SliverDemo extends StatelessWidget {
       body: CustomScrollView(
         slivers: <Widget>[
           SliverAppBar(
-            title: Text("小强"),
-            centerTitle: true,
+//            title: Text("小强"),
+//            centerTitle: true,
 //            pinned: true,
             floating: true,
+            expandedHeight: 180,
+            flexibleSpace: FlexibleSpaceBar(
+              title: Text("小强"),
+              centerTitle: true,
+              background: Image.network(
+                "https://resources.ninghao.org/images/the-old-fashioned.png",
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
           SliverSafeArea(
               sliver: SliverPadding(

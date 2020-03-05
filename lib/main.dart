@@ -26,7 +26,7 @@ class App extends StatelessWidget {
             splashColor: Colors.white30),
 
         //主题颜色字体
-        home: SliverDemo());
+        home: Home());
   }
 }
 
@@ -35,7 +35,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 4,
+      length: 5,
       child: Scaffold(
         backgroundColor: Colors.grey[100],
         appBar: AppBar(
@@ -52,6 +52,9 @@ class Home extends StatelessWidget {
                 ),
                 Tab(
                   icon: Icon(Icons.view_agenda),
+                ),
+                Tab(
+                  icon: Icon(Icons.list),
                 ),
               ],
               //指示器高度
@@ -91,6 +94,8 @@ class Home extends StatelessWidget {
             LayoutDemo(),
 
             ViewDemo(),
+
+            SliverDemo(),
           ],
         ),
 
@@ -103,5 +108,3 @@ class Home extends StatelessWidget {
     );
   }
 }
-
-
