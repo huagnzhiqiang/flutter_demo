@@ -5,6 +5,7 @@ import 'demo/BottomNavigationBarDemo.dart';
 import 'demo/DraberMode.dart';
 import 'demo/LayoutDemo.dart';
 import 'demo/ListViewDemo.dart';
+import 'demo/SliverDemo.dart';
 import 'demo/ViewDemo.dart';
 
 //主入口
@@ -25,7 +26,7 @@ class App extends StatelessWidget {
             splashColor: Colors.white30),
 
         //主题颜色字体
-        home: Home());
+        home: SliverDemo());
   }
 }
 
