@@ -12,12 +12,20 @@ import 'package:flutter/material.dart';
 class LayoutDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        IconBadge(
-          Icons.clear,
-        )
-      ],
+    return Container(
+      child: Row(
+        children: <Widget>[
+          IconBadge(
+            Icons.clear,
+          ),
+          IconBadge(
+            Icons.person,
+          ),
+          IconBadge(
+            Icons.message,
+          ),
+        ],
+      ),
     );
   }
 }
