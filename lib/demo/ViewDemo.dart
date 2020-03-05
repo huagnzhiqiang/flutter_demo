@@ -13,13 +13,23 @@ import 'package:flutter_demo/model/Post.dart';
 class ViewDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GridView.count(
-      crossAxisCount: 3,
+    return GridViewExtent();
+  }
+
+}
+
+
+class GridViewExtent extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return GridView.extent(
+      maxCrossAxisExtent: 160,
       crossAxisSpacing: 16,
       mainAxisSpacing: 16,
       children: _buidelTiels(posts.length),
     );
   }
+
 
   List<Widget> _buidelTiels(int length) {
     return List.generate(length, (int index) {
@@ -57,6 +67,57 @@ class ViewDemo extends StatelessWidget {
     });
   }
 }
+
+///GridViewCount 网格视图
+class GridViewCount extends StatelessWidget{
+  @override
+  Widget build(BuildContext context) {
+    return GridView.count(
+      crossAxisCount: 3,
+      crossAxisSpacing: 16,
+      mainAxisSpacing: 16,
+      children: _buidelTiels(posts.length),
+    );
+  }
+
+
+  List<Widget> _buidelTiels(int length) {
+    return List.generate(length, (int index) {
+      return Container(
+        child: Stack(
+          children: <Widget>[
+            SizedBox.expand(
+              child: Image.network(
+                posts[index].imageUrl,
+                fit: BoxFit.cover,
+              ),
+            ),
+            Positioned(
+              left: 5,
+              bottom: 5,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    posts[index].title,
+                    style: TextStyle(
+                      fontSize: 12,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(posts[index].author),
+                ],
+              ),
+            )
+          ],
+        ),
+      );
+    });
+  }
+}
+
 
 ///PageView.builder 按需生成页面
 class PageViewBuilderDemo extends StatelessWidget {
