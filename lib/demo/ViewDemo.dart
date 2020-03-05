@@ -13,25 +13,46 @@ import 'package:flutter_demo/model/Post.dart';
 class ViewDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return GridViewExtent();
+    return GridViewBuilderDemo();
   }
-
 }
 
+class GridViewBuilderDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return GridView.builder(
+        itemCount: posts.length,
+        padding: EdgeInsets.all(5),
+        gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
+            maxCrossAxisExtent: 150,
+            crossAxisSpacing: 8.0,
+            mainAxisSpacing: 8.0),
+        itemBuilder: _itemBuilder);
+  }
 
-class GridViewExtent extends StatelessWidget{
+  Widget _itemBuilder(BuildContext context, int index) {
+    return Container(
+      child: Image.network(
+        posts[index].imageUrl,
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+}
+
+///GridViewExtent 网格视图
+class GridViewExtent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.extent(
       maxCrossAxisExtent: 160,
       crossAxisSpacing: 16,
       mainAxisSpacing: 16,
-      children: _buidelTiels(posts.length),
+      children: _builderTitle(posts.length),
     );
   }
 
-
-  List<Widget> _buidelTiels(int length) {
+  List<Widget> _builderTitle(int length) {
     return List.generate(length, (int index) {
       return Container(
         child: Stack(
@@ -69,19 +90,18 @@ class GridViewExtent extends StatelessWidget{
 }
 
 ///GridViewCount 网格视图
-class GridViewCount extends StatelessWidget{
+class GridViewCount extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GridView.count(
       crossAxisCount: 3,
       crossAxisSpacing: 16,
       mainAxisSpacing: 16,
-      children: _buidelTiels(posts.length),
+      children: _builderTitle(posts.length),
     );
   }
 
-
-  List<Widget> _buidelTiels(int length) {
+  List<Widget> _builderTitle(int length) {
     return List.generate(length, (int index) {
       return Container(
         child: Stack(
@@ -117,7 +137,6 @@ class GridViewCount extends StatelessWidget{
     });
   }
 }
-
 
 ///PageView.builder 按需生成页面
 class PageViewBuilderDemo extends StatelessWidget {
