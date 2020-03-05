@@ -14,18 +14,39 @@ class LayoutDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          IconBadge(
-            Icons.clear,
+          SizedBox(
+            height: 150,
+            width: 150,
+            child: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(18)),
+                  color: Colors.green),
+              child: Icon(
+                Icons.message,
+                color: Colors.grey,
+                size: 50,
+              ),
+            ),
           ),
-          IconBadge(
-            Icons.person,
+          SizedBox(
+            width: 10,
           ),
-          IconBadge(
-            Icons.message,
-          ),
+          SizedBox(
+            height: 150,
+            width: 150,
+            child: Container(
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(18)),
+                  color: Colors.green),
+              child: Icon(
+                Icons.message,
+                color: Colors.grey,
+                size: 50,
+              ),
+            ),
+          )
         ],
       ),
     );
