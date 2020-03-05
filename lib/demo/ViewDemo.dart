@@ -12,6 +12,33 @@ import 'package:flutter/material.dart';
 class ViewDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return PageView(
+      children: <Widget>[
+        Container(
+          color: Colors.green,
+          alignment: Alignment.center,
+          child: Text(
+            "ONE",
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+        Container(
+          color: Colors.red,
+          alignment: Alignment.center,
+          child: Text(
+            "TOW",
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+        Container(
+          color: Colors.orange,
+          alignment: Alignment.center,
+          child: Text(
+            "THREE",
+            style: TextStyle(color: Colors.white),
+          ),
+        )
+      ],
+    );
   }
 }
