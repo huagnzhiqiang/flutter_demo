@@ -15,9 +15,12 @@ class LayoutDemo extends StatelessWidget {
     return Container(
       child: Column(
         children: <Widget>[
-          //权重
-          AspectRatio(
-            aspectRatio: 12 / 1,
+          //限制最大最小
+          ConstrainedBox(
+            constraints: BoxConstraints(
+              minHeight: 200,
+              minWidth: 200
+            ),
             child: Container(
               child: Icon(Icons.message),
               color:  Colors.red,
