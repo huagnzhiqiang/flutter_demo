@@ -13,6 +13,12 @@ class ViewDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageView(
+      //表示滑动停止的时候就停在那个位置
+//      pageSnapping: false ,
+      //方向会反过来 第一页变成最后一页
+//      reverse: true,
+      onPageChanged: (currentPage) => debugPrint("当前页面-->$currentPage"),
+
       children: <Widget>[
         Container(
           color: Colors.green,
