@@ -5,6 +5,7 @@ import 'demo/BottomNavigationBarDemo.dart';
 import 'demo/DraberMode.dart';
 import 'demo/LayoutDemo.dart';
 import 'demo/ListViewDemo.dart';
+import 'demo/ViewDemo.dart';
 
 //主入口
 void main() => runApp(App());
@@ -33,7 +34,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         backgroundColor: Colors.grey[100],
         appBar: AppBar(
@@ -47,6 +48,9 @@ class Home extends StatelessWidget {
                 ),
                 Tab(
                   icon: Icon(Icons.account_balance_wallet),
+                ),
+                Tab(
+                  icon: Icon(Icons.view_agenda),
                 ),
               ],
               //指示器高度
@@ -80,10 +84,12 @@ class Home extends StatelessWidget {
 
         body: TabBarView(
           children: <Widget>[
-          ListViewDemo(),
-          BasicDemo(),
+            ListViewDemo(),
+            BasicDemo(),
 //            Icon(Icons.accessibility,size: 120,color: Colors.blue,),
-           LayoutDemo(),
+            LayoutDemo(),
+
+            ViewDemo(),
           ],
         ),
 
@@ -96,4 +102,5 @@ class Home extends StatelessWidget {
     );
   }
 }
+
 
