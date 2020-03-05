@@ -16,38 +16,67 @@ class LayoutDemo extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          SizedBox(
-            height: 150,
-            width: 150,
-            child: Container(
-              //对齐
-              alignment: Alignment.topCenter,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(18)),
-                  color: Colors.green),
-              child: Icon(
-                Icons.message,
-                color: Colors.grey,
-                size: 50,
+          Stack(
+            alignment: Alignment.center,
+            children: <Widget>[
+              SizedBox(
+                height: 150,
+                width: 150,
+                child: Container(
+                  //对齐
+                  alignment: Alignment.topCenter,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(18)),
+                      color: Colors.green),
+                  child: Icon(
+                    Icons.message,
+                    color: Colors.grey,
+                    size: 50,
+                  ),
+                ),
               ),
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          SizedBox(
-            height: 150,
-            width: 150,
-            child: Container(
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.all(Radius.circular(18)),
-                  color: Colors.green),
-              child: Icon(
-                Icons.message,
-                color: Colors.grey,
-                size: 50,
+              SizedBox(
+                height: 10,
               ),
-            ),
+              SizedBox(
+
+                height: 80,
+                width: 80,
+
+                child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(18)),
+                      color: Colors.blue),
+                  child: Icon(
+                    Icons.message,
+                    color: Colors.black,
+                    size: 50,
+                  ),
+                ),
+              ),
+
+              Positioned(
+                left: 10,
+                bottom: 20,
+                child: SizedBox(
+                height: 20,
+                width: 20,
+
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(18)),
+                      color: Colors.blue),
+                  child: Icon(
+                    Icons.message,
+                    color: Colors.black,
+                    size: 10,
+                  ),
+                ),
+              ),)
+
+
+            ],
           )
         ],
       ),
