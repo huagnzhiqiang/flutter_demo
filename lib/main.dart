@@ -26,11 +26,11 @@ class App extends StatelessWidget {
           splashColor: Colors.white30),
 
       //主题颜色字体
-//      home: Home(),
+      home: Home(),
       //初始化路由
-      initialRoute: "/小强",
+//      initialRoute: "/小强",
       routes: {
-        "/": (context) => NavigatorDemo(),
+//        "/": (context) => NavigatorDemo(),
         "/小强": (context) => Page(
               title: "小强",
             )
