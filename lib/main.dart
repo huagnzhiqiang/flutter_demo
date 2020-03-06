@@ -16,21 +16,25 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      //将右上角debug样式去掉
+      debugShowCheckedModeBanner: false,
 
-        //将右上角debug样式去掉
-        debugShowCheckedModeBanner: false,
+      //主题
+      theme: ThemeData(
+          primarySwatch: Colors.yellow,
+          highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
+          splashColor: Colors.white30),
 
-        //主题
-        theme: ThemeData(
-            primarySwatch: Colors.yellow,
-            highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
-            splashColor: Colors.white30),
-
-        //主题颜色字体
-        home: Home(),
-    routes: {
-         "/小强":(context)=>Page(title: "小强",)
-    },
+      //主题颜色字体
+//      home: Home(),
+      //初始化路由
+      initialRoute: "/小强",
+      routes: {
+        "/": (context) => NavigatorDemo(),
+        "/小强": (context) => Page(
+              title: "小强",
+            )
+      },
     );
   }
 }
@@ -60,7 +64,8 @@ class Home extends StatelessWidget {
                 ),
                 Tab(
                   icon: Icon(Icons.list),
-                ),Tab(
+                ),
+                Tab(
                   icon: Icon(Icons.list),
                 ),
               ],
