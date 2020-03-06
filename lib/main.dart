@@ -5,6 +5,7 @@ import 'demo/BottomNavigationBarDemo.dart';
 import 'demo/DraberMode.dart';
 import 'demo/LayoutDemo.dart';
 import 'demo/ListViewDemo.dart';
+import 'demo/NavigatorDemo.dart';
 import 'demo/SliverDemo.dart';
 import 'demo/ViewDemo.dart';
 
@@ -35,7 +36,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 5,
+      length: 6,
       child: Scaffold(
         backgroundColor: Colors.grey[100],
         appBar: AppBar(
@@ -54,6 +55,8 @@ class Home extends StatelessWidget {
                   icon: Icon(Icons.view_agenda),
                 ),
                 Tab(
+                  icon: Icon(Icons.list),
+                ),Tab(
                   icon: Icon(Icons.list),
                 ),
               ],
@@ -89,6 +92,7 @@ class Home extends StatelessWidget {
         body: TabBarView(
           children: <Widget>[
             ListViewDemo(),
+
             BasicDemo(),
 //            Icon(Icons.accessibility,size: 120,color: Colors.blue,),
             LayoutDemo(),
@@ -96,6 +100,8 @@ class Home extends StatelessWidget {
             ViewDemo(),
 
             SliverDemo(),
+
+            NavigatorDemo(),
           ],
         ),
 
