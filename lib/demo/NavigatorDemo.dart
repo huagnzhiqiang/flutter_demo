@@ -22,10 +22,11 @@ class NavigatorDemo extends StatelessWidget {
             ),
             FlatButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (BuildContext context) => Page(
-                          title: "小强",
-                        )));
+                Navigator.of(context).pushNamed("/小强");
+//                Navigator.of(context).push(MaterialPageRoute(
+//                    builder: (BuildContext context) => Page(
+//                          title: "小强",
+//                        )));
               },
               child: Text("强仔"),
             )
