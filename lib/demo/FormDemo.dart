@@ -14,15 +14,15 @@ class FormDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Theme(
-      data: Theme.of(context).copyWith(
-        primaryColor: Colors.orange,
-      ),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
+          data: Theme.of(context).copyWith(
+            primaryColor: Colors.orange,
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
 //          crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[RegisterFormDemo()],
-      ),
-    ));
+            children: <Widget>[RegisterFormDemo()],
+          ),
+        ));
   }
 }
 
@@ -34,50 +34,67 @@ class RegisterFormDemo extends StatefulWidget {
 class _RegisterFormDemoState extends State<RegisterFormDemo> {
   var registerKey = GlobalKey<FormState>();
   var userName, password;
+  var autovalidate = false;
 
   @override
   Widget build(BuildContext context) {
     return Form(
       key: registerKey,
-      child: Column(
-        children: <Widget>[
-          TextFormField(
-            onSaved: (value) {
-              userName = value;
-            },
-            decoration: InputDecoration(labelText: "账号", helperText: ""),
-            validator: validatorUserName,
-          ),
-          TextFormField(
-            onSaved: (value) {
-              password = value;
-            },
-            obscureText: true,
-            decoration: InputDecoration(labelText: "密码", helperText: ""),
-            validator: validatorPasswork,
-          ),
-          SizedBox(
-            height: 32.0,
-          ),
-          Container(
-            width: double.infinity,
-            child: RaisedButton(
-              color: Colors.orange,
-              padding: EdgeInsets.all(5),
-              child: Text("提交"),
-              onPressed: onRegisterPressed,
+      child: Padding(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          children: <Widget>[
+            TextFormField(
+              onSaved: (value) {
+                userName = value;
+              },
+              decoration: InputDecoration(labelText: "账号", helperText: ""),
+              validator: validatorUserName,
+              autovalidate: autovalidate,
             ),
-          )
-        ],
+            TextFormField(
+              onSaved: (value) {
+                password = value;
+              },
+              obscureText: true,
+              decoration: InputDecoration(labelText: "密码", helperText: ""),
+              validator: validatorPasswork,
+              autovalidate: autovalidate,
+
+            ),
+            SizedBox(
+              height: 32.0,
+            ),
+            Container(
+              width: double.infinity,
+              height: 40,
+              child: RaisedButton(
+                shape: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.orange),
+                    borderRadius: BorderRadius.circular(8)),
+                color: Colors.orange,
+                padding: EdgeInsets.all(5),
+                child: Text("提交"),
+                onPressed: onRegisterPressed,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
 
   void onRegisterPressed() {
-    registerKey.currentState.save();
-    registerKey.currentState.validate();
-    debugPrint("userName-->$userName");
-    debugPrint("password-->$password");
+    if (registerKey.currentState.validate()) {
+      registerKey.currentState.save();
+      debugPrint("userName-->$userName");
+      debugPrint("password-->$password");
+    } else {
+      setState(() {
+        autovalidate = true;
+      });
+    }
+
   }
 
   String validatorUserName(String value) {
@@ -150,7 +167,9 @@ class ThemeDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme.of(context).accentColor,
+      color: Theme
+          .of(context)
+          .accentColor,
     );
   }
 }
