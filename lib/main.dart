@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'demo/BasicDemo.dart';
 import 'demo/BottomNavigationBarDemo.dart';
 import 'demo/DraberMode.dart';
+import 'demo/FormDemo.dart';
 import 'demo/LayoutDemo.dart';
 import 'demo/ListViewDemo.dart';
 import 'demo/NavigatorDemo.dart';
@@ -21,9 +22,10 @@ class App extends StatelessWidget {
 
       //主题
       theme: ThemeData(
-          primarySwatch: Colors.yellow,
+          primaryColor: Colors.yellow,
           highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
-          splashColor: Colors.white30),
+          splashColor: Colors.white30,
+          accentColor: Colors.orange),
 
       //主题颜色字体
       home: Home(),
@@ -44,12 +46,15 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 6,
+      length: 7,
       child: Scaffold(
         backgroundColor: Colors.grey[100],
         appBar: AppBar(
             bottom: TabBar(
               tabs: <Widget>[
+                Tab(
+                  icon: Icon(Icons.account_balance),
+                ),
                 Tab(
                   icon: Icon(Icons.account_balance),
                 ),
@@ -100,6 +105,8 @@ class Home extends StatelessWidget {
 
         body: TabBarView(
           children: <Widget>[
+            FormDemo(),
+
             ListViewDemo(),
 
             BasicDemo(),
