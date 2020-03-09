@@ -35,6 +35,10 @@ class FloatingActionButtonDemo extends StatelessWidget {
       appBar: AppBar(
         title: Text("FloatingActionButtonDemo"),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: null,
+        child: Icon(Icons.add),
+      ),
     );
   }
 }
