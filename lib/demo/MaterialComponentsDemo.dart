@@ -46,7 +46,11 @@ class ButtonDemo extends StatelessWidget {
           children: <Widget>[
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[],
+              children: <Widget>[
+                FlatButton(onPressed: () {}, child: Text("小强")),
+                FlatButton.icon(
+                    onPressed: () {}, icon: Icon(Icons.add), label: Text("小强")),
+              ],
             )
           ],
         ),
