@@ -60,25 +60,34 @@ class ButtonDemo extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                RaisedButton(
-                  onPressed: () {},
-                  child: Text("小强"),
-                  splashColor: Colors.yellow,
+            Theme(
+              data: Theme.of(context).copyWith(
+                buttonColor: Theme.of(context).primaryColor,
+                buttonTheme: ButtonThemeData(
+                  shape: StadiumBorder(),
+                  textTheme: ButtonTextTheme.accent
                 ),
-                SizedBox(
-                  width: 20,
-                ),
-                RaisedButton.icon(
-                  onPressed: () {},
-                  icon: Icon(Icons.add),
-                  label: Text("小强"),
-                  splashColor: Colors.yellow,
-                ),
-              ],
-            )
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  RaisedButton(
+                    onPressed: () {},
+                    child: Text("小强"),
+                    splashColor: Colors.yellow,
+                  ),
+                  SizedBox(
+                    width: 20,
+                  ),
+                  RaisedButton.icon(
+                    onPressed: () {},
+                    icon: Icon(Icons.add),
+                    label: Text("小强"),
+                    splashColor: Colors.yellow,
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
