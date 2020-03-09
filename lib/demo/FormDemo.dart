@@ -20,13 +20,50 @@ class FormDemo extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
 //          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[ThemeDemo(), TextFieldDemo()],
+          children: <Widget>[RegisterFormDemo()],
         ),
       ),
     );
   }
 }
 
+class RegisterFormDemo extends StatefulWidget {
+  @override
+  _RegisterFormDemoState createState() => _RegisterFormDemoState();
+}
+
+class _RegisterFormDemoState extends State<RegisterFormDemo> {
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      child: Column(
+        children: <Widget>[
+          TextFormField(
+            decoration: InputDecoration(labelText: "账号"),
+          ),
+          TextFormField(
+            obscureText: true,
+            decoration: InputDecoration(labelText: "密码"),
+          ),
+          SizedBox(
+            height: 32.0,
+          ),
+          Container(
+            width: double.infinity,
+            child: RaisedButton(
+              onPressed: null,
+              color: Colors.orange,
+              padding: EdgeInsets.all(5),
+              child: Text("提交"),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+//监听
 class TextFieldDemo extends StatefulWidget {
   @override
   _TextFieldDemoState createState() => _TextFieldDemoState();
@@ -46,12 +83,9 @@ class _TextFieldDemoState extends State<TextFieldDemo> {
     super.initState();
 //    textEditingController.text = "初始化第一次的值";
 
-    textEditingController.addListener(
-        (){
-          debugPrint("输入-->" + textEditingController.text);
-
-        }
-    );
+    textEditingController.addListener(() {
+      debugPrint("输入-->" + textEditingController.text);
+    });
   }
 
   @override
