@@ -88,6 +88,28 @@ class ButtonDemo extends StatelessWidget {
                 ],
               ),
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                OutlineButton(
+                  onPressed: () {},
+                  child: Text("小强"),
+                  //点击的渐变颜色
+                  splashColor: Colors.yellow,
+                  borderSide: BorderSide(color: Colors.red,width: 0.5),
+                  shape: StadiumBorder(),
+                  //边框的渐变颜色
+                  highlightedBorderColor: Colors.yellow,
+                ),
+                SizedBox(width: 20,),
+                OutlineButton.icon(
+                  onPressed: () {},
+                  icon: Icon(Icons.add),
+                  label: Text("小强"),
+                  splashColor: Colors.yellow,
+                ),
+              ],
+            ),
           ],
         ),
       ),
