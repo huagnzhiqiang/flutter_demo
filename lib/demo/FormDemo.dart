@@ -33,9 +33,31 @@ class TextFieldDemo extends StatefulWidget {
 }
 
 class _TextFieldDemoState extends State<TextFieldDemo> {
+  var textEditingController = TextEditingController();
+
+  @override
+  void dispose() {
+    textEditingController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+//    textEditingController.text = "初始化第一次的值";
+
+    textEditingController.addListener(
+        (){
+          debugPrint("输入-->" + textEditingController.text);
+
+        }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: textEditingController,
       //每一次输入都是执行这个方法
       onChanged: (value) {
         debugPrint(value);
