@@ -33,15 +33,25 @@ class RegisterFormDemo extends StatefulWidget {
 }
 
 class _RegisterFormDemoState extends State<RegisterFormDemo> {
+  var registerKey = GlobalKey<FormState>();
+  var userName, password;
+
   @override
   Widget build(BuildContext context) {
     return Form(
+      key: registerKey,
       child: Column(
         children: <Widget>[
           TextFormField(
+            onSaved: (value) {
+              userName = value;
+            },
             decoration: InputDecoration(labelText: "账号"),
           ),
           TextFormField(
+            onSaved: (value) {
+              password = value;
+            },
             obscureText: true,
             decoration: InputDecoration(labelText: "密码"),
           ),
@@ -51,15 +61,21 @@ class _RegisterFormDemoState extends State<RegisterFormDemo> {
           Container(
             width: double.infinity,
             child: RaisedButton(
-              onPressed: null,
               color: Colors.orange,
               padding: EdgeInsets.all(5),
               child: Text("提交"),
+              onPressed: onRegisterPressed,
             ),
           )
         ],
       ),
     );
+  }
+
+  void onRegisterPressed() {
+    registerKey.currentState.save();
+    debugPrint("userName-->$userName");
+    debugPrint("password-->$password");
   }
 }
 
