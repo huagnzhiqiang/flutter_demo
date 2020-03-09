@@ -37,7 +37,14 @@ class FloatingActionButtonDemo extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: null,
+        elevation: 0.0,
         child: Icon(Icons.add),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        child: Container(
+          height: 80.0,
+        ),
       ),
     );
   }
