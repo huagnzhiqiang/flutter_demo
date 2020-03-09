@@ -47,9 +47,36 @@ class ButtonDemo extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                FlatButton(onPressed: () {}, child: Text("小强")),
+                FlatButton(
+                  onPressed: () {},
+                  child: Text("小强"),
+                  splashColor: Colors.yellow,
+                ),
                 FlatButton.icon(
-                    onPressed: () {}, icon: Icon(Icons.add), label: Text("小强")),
+                  onPressed: () {},
+                  icon: Icon(Icons.add),
+                  label: Text("小强"),
+                  splashColor: Colors.yellow,
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                RaisedButton(
+                  onPressed: () {},
+                  child: Text("小强"),
+                  splashColor: Colors.yellow,
+                ),
+                SizedBox(
+                  width: 20,
+                ),
+                RaisedButton.icon(
+                  onPressed: () {},
+                  icon: Icon(Icons.add),
+                  label: Text("小强"),
+                  splashColor: Colors.yellow,
+                ),
               ],
             )
           ],
