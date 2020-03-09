@@ -19,9 +19,8 @@ class FormDemo extends StatelessWidget {
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+//          crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[ThemeDemo(), TextFieldDemo()],
-
         ),
       ),
     );
@@ -36,7 +35,25 @@ class TextFieldDemo extends StatefulWidget {
 class _TextFieldDemoState extends State<TextFieldDemo> {
   @override
   Widget build(BuildContext context) {
-    return TextField();
+    return TextField(
+      //每一次输入都是执行这个方法
+      onChanged: (value) {
+        debugPrint(value);
+      },
+      onSubmitted: (value) {
+        debugPrint("提交-->" + value);
+      },
+      textInputAction: TextInputAction.send,
+      decoration: InputDecoration(
+          icon: Icon(Icons.title),
+          hintText: "标题",
+          labelText: "Title",
+          //去掉边框
+//        border: InputBorder.none,
+          border: OutlineInputBorder(),
+          filled: true,
+          fillColor: Colors.yellow),
+    );
   }
 }
 
