@@ -14,15 +14,15 @@ class FormDemo extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: Theme(
-          data: Theme.of(context).copyWith(
-            primaryColor: Colors.orange,
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+      data: Theme.of(context).copyWith(
+        primaryColor: Colors.orange,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
 //          crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[RegisterFormDemo()],
-          ),
-        ));
+        children: <Widget>[RegisterFormDemo()],
+      ),
+    ));
   }
 }
 
@@ -60,7 +60,6 @@ class _RegisterFormDemoState extends State<RegisterFormDemo> {
               decoration: InputDecoration(labelText: "密码", helperText: ""),
               validator: validatorPasswork,
               autovalidate: autovalidate,
-
             ),
             SizedBox(
               height: 32.0,
@@ -89,12 +88,13 @@ class _RegisterFormDemoState extends State<RegisterFormDemo> {
       registerKey.currentState.save();
       debugPrint("userName-->$userName");
       debugPrint("password-->$password");
+
+      Scaffold.of(context).showSnackBar(SnackBar(content: Text("登录中....")));
     } else {
       setState(() {
         autovalidate = true;
       });
     }
-
   }
 
   String validatorUserName(String value) {
@@ -167,9 +167,7 @@ class ThemeDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Theme
-          .of(context)
-          .accentColor,
+      color: Theme.of(context).accentColor,
     );
   }
 }
