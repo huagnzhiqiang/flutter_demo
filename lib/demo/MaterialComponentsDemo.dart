@@ -64,9 +64,7 @@ class ButtonDemo extends StatelessWidget {
               data: Theme.of(context).copyWith(
                 buttonColor: Theme.of(context).primaryColor,
                 buttonTheme: ButtonThemeData(
-                  shape: StadiumBorder(),
-                  textTheme: ButtonTextTheme.accent
-                ),
+                    shape: StadiumBorder(), textTheme: ButtonTextTheme.accent),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -96,18 +94,51 @@ class ButtonDemo extends StatelessWidget {
                   child: Text("小强"),
                   //点击的渐变颜色
                   splashColor: Colors.yellow,
-                  borderSide: BorderSide(color: Colors.red,width: 0.5),
+                  borderSide: BorderSide(color: Colors.red, width: 0.5),
                   shape: StadiumBorder(),
                   //边框的渐变颜色
                   highlightedBorderColor: Colors.yellow,
                 ),
-                SizedBox(width: 20,),
+                SizedBox(
+                  width: 20,
+                ),
                 OutlineButton.icon(
                   onPressed: () {},
                   icon: Icon(Icons.add),
                   label: Text("小强"),
                   splashColor: Colors.yellow,
                 ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                    child: OutlineButton(
+                  onPressed: () {},
+                  child: Text("小强"),
+                  //点击的渐变颜色
+                  splashColor: Colors.yellow,
+                  borderSide: BorderSide(color: Colors.red, width: 0.5),
+                  shape: StadiumBorder(),
+                  //边框的渐变颜色
+                  highlightedBorderColor: Colors.yellow,
+                )),
+                SizedBox(
+                  width: 20,
+                ),
+                Expanded(
+                    flex: 2,
+                    child: OutlineButton(
+                      onPressed: () {},
+                      child: Text("小强"),
+                      //点击的渐变颜色
+                      splashColor: Colors.yellow,
+                      borderSide: BorderSide(color: Colors.red, width: 0.5),
+                      shape: OutlineInputBorder(),
+                      //边框的渐变颜色
+                      highlightedBorderColor: Colors.yellow,
+                    )),
               ],
             ),
           ],
