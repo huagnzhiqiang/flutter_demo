@@ -13,17 +13,16 @@ class FormDemo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Theme(
-        data: Theme.of(context).copyWith(
-          primaryColor: Colors.orange,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-//          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[RegisterFormDemo()],
-        ),
+        body: Theme(
+      data: Theme.of(context).copyWith(
+        primaryColor: Colors.orange,
       ),
-    );
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+//          crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[RegisterFormDemo()],
+      ),
+    ));
   }
 }
 
@@ -46,14 +45,16 @@ class _RegisterFormDemoState extends State<RegisterFormDemo> {
             onSaved: (value) {
               userName = value;
             },
-            decoration: InputDecoration(labelText: "账号"),
+            decoration: InputDecoration(labelText: "账号", helperText: ""),
+            validator: validatorUserName,
           ),
           TextFormField(
             onSaved: (value) {
               password = value;
             },
             obscureText: true,
-            decoration: InputDecoration(labelText: "密码"),
+            decoration: InputDecoration(labelText: "密码", helperText: ""),
+            validator: validatorPasswork,
           ),
           SizedBox(
             height: 32.0,
@@ -74,8 +75,23 @@ class _RegisterFormDemoState extends State<RegisterFormDemo> {
 
   void onRegisterPressed() {
     registerKey.currentState.save();
+    registerKey.currentState.validate();
     debugPrint("userName-->$userName");
     debugPrint("password-->$password");
+  }
+
+  String validatorUserName(String value) {
+    if (value.isEmpty) {
+      return "账号为空";
+    }
+    return null;
+  }
+
+  String validatorPasswork(String value) {
+    if (value.isEmpty) {
+      return "密码为空";
+    }
+    return null;
   }
 }
 
