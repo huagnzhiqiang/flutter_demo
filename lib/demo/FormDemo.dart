@@ -40,7 +40,7 @@ class _RegisterFormDemoState extends State<RegisterFormDemo> {
   Widget build(BuildContext context) {
     return Form(
       key: registerKey,
-      child: Padding(
+      child: Container(
         padding: EdgeInsets.all(20),
         child: Column(
           children: <Widget>[

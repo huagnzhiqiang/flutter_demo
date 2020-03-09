@@ -22,7 +22,57 @@ class MaterialComponentsDemo extends StatelessWidget {
             title: "小强",
             page: FloatingActionButtonDemo(),
           ),
+          ListItem(
+            title: "BottemDemo",
+            page: ButtonDemo(),
+          ),
         ],
+      ),
+    );
+  }
+}
+
+class ButtonDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("ButtomDemo"),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _WidgetDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("_WidgetDemo"),
+      ),
+      body: Container(
+        padding: EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[],
+            )
+          ],
+        ),
       ),
     );
   }
