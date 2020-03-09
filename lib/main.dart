@@ -6,6 +6,7 @@ import 'demo/DraberMode.dart';
 import 'demo/FormDemo.dart';
 import 'demo/LayoutDemo.dart';
 import 'demo/ListViewDemo.dart';
+import 'demo/MaterialComponentsDemo.dart';
 import 'demo/NavigatorDemo.dart';
 import 'demo/SliverDemo.dart';
 import 'demo/ViewDemo.dart';
@@ -46,12 +47,15 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 7,
+      length: 8,
       child: Scaffold(
         backgroundColor: Colors.grey[100],
         appBar: AppBar(
             bottom: TabBar(
               tabs: <Widget>[
+                Tab(
+                  icon: Icon(Icons.account_balance),
+                ),
                 Tab(
                   icon: Icon(Icons.account_balance),
                 ),
@@ -105,6 +109,9 @@ class Home extends StatelessWidget {
 
         body: TabBarView(
           children: <Widget>[
+
+            MaterialComponentsDemo(),
+
             FormDemo(),
 
             ListViewDemo(),
