@@ -141,6 +141,28 @@ class ButtonDemo extends StatelessWidget {
                     )),
               ],
             ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Theme(
+                    data: Theme.of(context).copyWith(
+                        buttonTheme: ButtonThemeData(
+                      padding: EdgeInsets.symmetric(horizontal: 160.0),
+                    )),
+                    child: ButtonBar(
+                      children: <Widget>[
+                        OutlineButton(
+                          onPressed: () {},
+                          child: Text("小强"),
+                        ),
+                        OutlineButton(
+                          onPressed: () {},
+                          child: Text("小强"),
+                        )
+                      ],
+                    ))
+              ],
+            )
           ],
         ),
       ),
