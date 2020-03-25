@@ -34,7 +34,28 @@ class _RadioDemoState extends State<RadioDemo> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-
+            Text("$_radioGroupA"),
+            SizedBox(
+              height: 10.0,
+            ),
+            RadioListTile(
+              value: true,
+              groupValue: _radioGroupA,
+              onChanged: _handleRadioValueChanged,
+              title: Text("男"),
+              subtitle: Text("这是一个男的选项!"),
+              secondary: Icon(Icons.radio),
+              selected: _radioGroupA,
+            ),
+            RadioListTile(
+              value: false,
+              groupValue: _radioGroupA,
+              onChanged: _handleRadioValueChanged,
+              title: Text("女"),
+              subtitle: Text("这是一个女的选项!"),
+              secondary: Icon(Icons.radio),
+              selected: _radioGroupA,
+            ),
             Radio(
                 value: true,
                 groupValue: _radioGroupA,
