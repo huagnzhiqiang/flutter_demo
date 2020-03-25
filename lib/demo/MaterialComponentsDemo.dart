@@ -4,6 +4,7 @@ import 'CheckboxDemo.dart';
 import 'FormDemo.dart';
 import 'PopupMenuButtonDemo.dart';
 import 'RadioDemo.dart';
+import 'SwitchDemo.dart';
 
 /*
  * @author 小强
@@ -24,9 +25,14 @@ class MaterialComponentsDemo extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListItem(
+            title: "开关SwitchDemo",
+            page: SwitchDemo(),
+          ),
+          ListItem(
             title: "单选框RadioDemo",
             page: RadioDemo(),
-          ),   ListItem(
+          ),
+          ListItem(
             title: "复选框CheckboxDemo",
             page: CheckboxDemo(),
           ),

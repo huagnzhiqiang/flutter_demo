@@ -34,7 +34,7 @@ class _RadioDemoState extends State<RadioDemo> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("$_radioGroupA"),
+            Text(_radioGroupA ? "男" : "女"),
             SizedBox(
               height: 10.0,
             ),
