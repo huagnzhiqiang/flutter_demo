@@ -15,9 +15,10 @@ class PopupMenuButtonDemo extends StatefulWidget {
 }
 
 class _PopupMenuButtonDemoState extends State<PopupMenuButtonDemo> {
+  String _currentMenuItem = "小强";
+
   @override
   Widget build(BuildContext context) {
-    String _currentMenuItem = "小强";
     return Scaffold(
       appBar: AppBar(
         title: Text("PopupMenuButtonDemo"),
@@ -37,7 +38,6 @@ class _PopupMenuButtonDemoState extends State<PopupMenuButtonDemo> {
                       _currentMenuItem = value;
                     });
                   },
-
                   itemBuilder: (context) {
                     return [
                       PopupMenuItem(
@@ -50,7 +50,6 @@ class _PopupMenuButtonDemoState extends State<PopupMenuButtonDemo> {
                       ),
                     ];
                   },
-
                 )
               ],
             )
