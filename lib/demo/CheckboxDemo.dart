@@ -21,7 +21,6 @@ class _CheckboxDemoState extends State<CheckboxDemo> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: Text("复选框的演示"),
@@ -29,6 +28,20 @@ class _CheckboxDemoState extends State<CheckboxDemo> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+
+          CheckboxListTile(
+            value: _CheckboxItemA,
+            onChanged: (value) {
+              setState(() {
+                _CheckboxItemA = value;
+              });
+            },
+            selected: _CheckboxItemA,
+            subtitle: Text("子带标题的复选框"),
+            title: Text("带标题的复选框"),
+            secondary: Icon(Icons.add),
+          ),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -41,7 +54,17 @@ class _CheckboxDemoState extends State<CheckboxDemo> {
                 },
                 //设置勾选状态的颜色,默认是主题颜色
                 activeColor: Colors.red,
-              )
+              ),              Checkbox(
+                value: _CheckboxItemA,
+                onChanged: (value) {
+                  setState(() {
+                    _CheckboxItemA = value;
+                  });
+                },
+                //设置勾选状态的颜色,默认是主题颜色
+                activeColor: Colors.red,
+              ),
+
             ],
           )
         ],
