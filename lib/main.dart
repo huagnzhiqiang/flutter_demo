@@ -10,8 +10,14 @@ import 'demo/MaterialComponentsDemo.dart';
 import 'demo/NavigatorDemo.dart';
 import 'demo/SliverDemo.dart';
 import 'demo/ViewDemo.dart';
-
-//主入口
+/*
+ * @author 小强
+ *
+ * @time 2020/3/16  8:49
+ *
+ * @desc 主入口
+ *
+ */
 void main() => runApp(App());
 
 class App extends StatelessWidget {

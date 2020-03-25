@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'PopupMenuButtonDemo.dart';
+
 /*
  * @author 小强
  *
@@ -23,6 +25,9 @@ class MaterialComponentsDemo extends StatelessWidget {
             page: FloatingActionButtonDemo(),
           ),
           ListItem(
+            title: "PopupMenuButtonDemo",
+            page: PopupMenuButtonDemo(),
+          ),          ListItem(
             title: "BottemDemo",
             page: ButtonDemo(),
           ),
