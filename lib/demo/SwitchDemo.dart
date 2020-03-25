@@ -27,7 +27,20 @@ class _SwitchDemoState extends State<SwitchDemo> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(_switchItem ? "开" : "关",style: TextStyle(fontSize: 32.0),),
+            SwitchListTile(
+              value: _switchItem,
+              onChanged: _handleOnChanged,
+              secondary: Icon(_switchItem
+                  ? Icons.wifi
+                  : Icons.wifi_lock),
+              title: Text("这个wifi一个开关",style: TextStyle(fontSize: 22.0)),
+              subtitle: Text("这个一个wifi开关描述"),
+              selected: _switchItem,
+            ),
+            Text(
+              _switchItem ? "开" : "关",
+              style: TextStyle(fontSize: 32.0),
+            ),
             Switch(value: _switchItem, onChanged: _handleOnChanged),
           ],
         ),
