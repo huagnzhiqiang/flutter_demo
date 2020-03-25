@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'CheckboxDemo.dart';
 import 'FormDemo.dart';
 import 'PopupMenuButtonDemo.dart';
+import 'RadioDemo.dart';
 
 /*
  * @author 小强
@@ -23,6 +24,9 @@ class MaterialComponentsDemo extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListItem(
+            title: "单选框RadioDemo",
+            page: RadioDemo(),
+          ),   ListItem(
             title: "复选框CheckboxDemo",
             page: CheckboxDemo(),
           ),
