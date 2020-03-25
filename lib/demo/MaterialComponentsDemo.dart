@@ -4,6 +4,7 @@ import 'CheckboxDemo.dart';
 import 'FormDemo.dart';
 import 'PopupMenuButtonDemo.dart';
 import 'RadioDemo.dart';
+import 'SliderDemo.dart';
 import 'SwitchDemo.dart';
 
 /*
@@ -24,6 +25,10 @@ class MaterialComponentsDemo extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
+          ListItem(
+            title: "滑动选择器SliderDemo",
+            page: SliderDemo(),
+          ),
           ListItem(
             title: "开关SwitchDemo",
             page: SwitchDemo(),
