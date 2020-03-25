@@ -28,7 +28,7 @@ class _SliderDemoState extends State<SliderDemo> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(_sliderItem.toInt().toString()),
+            Text(_sliderItem.toString()),
             Slider(
               value: _sliderItem,
               onChanged: _handleOnChanged,
