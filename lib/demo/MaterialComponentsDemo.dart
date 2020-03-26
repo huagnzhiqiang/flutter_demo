@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'AlertDialogDemo.dart';
 import 'CheckboxDemo.dart';
 import 'DateTimeDemo.dart';
 import 'FormDemo.dart';
@@ -27,6 +28,10 @@ class MaterialComponentsDemo extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
+          ListItem(
+            title: "显示提示对话框AlertDialogDemo",
+            page: AlertDialogDemo(),
+          ),
           ListItem(
             title: "显示对话框SimpleDialogDemo",
             page: SimpleDialogDemo(),
