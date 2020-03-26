@@ -60,7 +60,7 @@ class _DateTimeDemoState extends State<DateTimeDemo> {
     );
   }
 
-  void _selectDate() async {
+  Future<void> _selectDate() async {
     var datePicker = await showDatePicker(
         context: context,
         initialDate: dt,
@@ -74,7 +74,7 @@ class _DateTimeDemoState extends State<DateTimeDemo> {
     });
   }
 
-  void _selectTime() async {
+  Future<void> _selectTime() async {
     var timeOfDay =
         await showTimePicker(context: context, initialTime: selectedTime);
 
