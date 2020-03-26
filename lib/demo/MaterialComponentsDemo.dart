@@ -5,6 +5,7 @@ import 'DateTimeDemo.dart';
 import 'FormDemo.dart';
 import 'PopupMenuButtonDemo.dart';
 import 'RadioDemo.dart';
+import 'SimpleDialogDemo.dart';
 import 'SliderDemo.dart';
 import 'SwitchDemo.dart';
 
@@ -26,6 +27,10 @@ class MaterialComponentsDemo extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
+          ListItem(
+            title: "显示对话框SimpleDialogDemo",
+            page: SimpleDialogDemo(),
+          ),
           ListItem(
             title: "时间选择器SliderDemo",
             page: DateTimeDemo(),
