@@ -14,6 +14,8 @@ class AlertDialogDemo extends StatefulWidget {
 }
 
 class _AlertDialogDemoState extends State<AlertDialogDemo> {
+  var alertDialogItemText = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,13 +27,17 @@ class _AlertDialogDemoState extends State<AlertDialogDemo> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            Text(alertDialogItemText),
+            SizedBox(
+              height: 20.0,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 RaisedButton(
                   onPressed: _openAlertDialog,
                   child: Text("打开提示对话框选择"),
-                )
+                ),
               ],
             )
           ],
@@ -43,8 +49,8 @@ class _AlertDialogDemoState extends State<AlertDialogDemo> {
   /*
    * 打开提示框
    */
-  void _openAlertDialog() {
-    showDialog(
+  Future<void> _openAlertDialog() async {
+    final dialog = await showDialog(
         barrierDismissible: false,
         context: context,
         builder: (context) {
@@ -54,16 +60,36 @@ class _AlertDialogDemoState extends State<AlertDialogDemo> {
             actions: <Widget>[
               FlatButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pop(context, Action.Cancel);
                   },
-                  child: Text("cancle")),
+                  child: Text("cancel")),
               FlatButton(
                   onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pop(context, Action.Ok);
                   },
                   child: Text("ok"))
             ],
           );
         });
+
+    if (dialog == null) return;
+
+    switch (dialog) {
+      case Action.Cancel:
+        setState(() {
+          alertDialogItemText = "取消";
+        });
+        break;
+      case Action.Ok:
+        setState(() {
+          alertDialogItemText = "ok";
+        });
+        break;
+    }
   }
+}
+
+enum Action {
+  Cancel,
+  Ok,
 }
