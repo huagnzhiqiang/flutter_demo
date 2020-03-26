@@ -15,6 +15,8 @@ class SimpleDialogDemo extends StatefulWidget {
 }
 
 class _SimpleDialogDemoState extends State<SimpleDialogDemo> {
+  var _showDialogItemText = "没有选项";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +27,7 @@ class _SimpleDialogDemoState extends State<SimpleDialogDemo> {
         padding: EdgeInsets.all(10),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[],
+          children: <Widget>[Text(_showDialogItemText)],
         ),
       ),
       floatingActionButton:
@@ -33,8 +35,8 @@ class _SimpleDialogDemoState extends State<SimpleDialogDemo> {
     );
   }
 
-  void floatingActionButton() {
-    showDialog(
+  Future<void> floatingActionButton() async {
+    var _showDialog = await showDialog(
       context: context,
       builder: (context) {
         return SimpleDialog(
@@ -43,30 +45,36 @@ class _SimpleDialogDemoState extends State<SimpleDialogDemo> {
             SimpleDialogOption(
               child: Text("选项1"),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pop(context, "选项1");
               },
             ),
             SimpleDialogOption(
               child: Text("选项2"),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pop(context, "选项2");
               },
             ),
             SimpleDialogOption(
               child: Text("选项3"),
-              onPressed: () {2 SimpleDialog：选项（SimpleDialogOption）
-                Navigator.pop(context);
+              onPressed: () {
+                Navigator.pop(context, "选项3");
               },
             ),
             SimpleDialogOption(
               child: Text("选项4"),
               onPressed: () {
-                Navigator.pop(context);
+                Navigator.pop(context, "选项4");
               },
             ),
           ],
         );
       },
     );
+
+    if (_showDialog == null) return;
+
+    setState(() {
+      _showDialogItemText = _showDialog;
+    });
   }
 }
