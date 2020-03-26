@@ -29,7 +29,7 @@ class _DateTimeDemoState extends State<DateTimeDemo> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             InkWell(
-              onTap: () {},
+              onTap: _selectDate,
               child: Row(
                 children: <Widget>[
                   Text(DateFormat.yMd().format(dt)),
@@ -44,5 +44,13 @@ class _DateTimeDemoState extends State<DateTimeDemo> {
         ),
       ),
     );
+  }
+
+  void _selectDate() {
+    showDatePicker(
+        context: context,
+        initialDate: dt,
+        firstDate: DateTime(1900),
+        lastDate: DateTime(2100));
   }
 }
