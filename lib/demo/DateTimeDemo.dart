@@ -17,6 +17,8 @@ class DateTimeDemo extends StatefulWidget {
 class _DateTimeDemoState extends State<DateTimeDemo> {
   DateTime dt = DateTime.now();
 
+  var selectedTime = new TimeOfDay(hour: 9, minute: 30);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,6 +41,18 @@ class _DateTimeDemoState extends State<DateTimeDemo> {
                   ),
                 ],
               ),
+            ),
+            InkWell(
+              onTap: _selectTime,
+              child: Row(
+                children: <Widget>[
+                  Text(selectedTime.format(context)),
+                  Icon(Icons.arrow_drop_down),
+                  SizedBox(
+                    width: 20.0,
+                  ),
+                ],
+              ),
             )
           ],
         ),
@@ -46,17 +60,28 @@ class _DateTimeDemoState extends State<DateTimeDemo> {
     );
   }
 
-  void _selectDate() async  {
-    DateTime datePicker = await showDatePicker(
+  void _selectDate() async {
+    var datePicker = await showDatePicker(
         context: context,
         initialDate: dt,
         firstDate: DateTime(1900),
-        lastDate: DateTime(2100)) ;
+        lastDate: DateTime(2100));
 
     if (datePicker == null) return;
 
     setState(() {
-      dt = datePicker ;
+      dt = datePicker;
+    });
+  }
+
+  void _selectTime() async {
+    var timeOfDay =
+        await showTimePicker(context: context, initialTime: selectedTime);
+
+    if (timeOfDay == null) return;
+
+    setState(() {
+      selectedTime = timeOfDay;
     });
   }
 }
