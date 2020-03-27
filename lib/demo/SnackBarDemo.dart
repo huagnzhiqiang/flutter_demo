@@ -15,6 +15,7 @@ class SnackBarDemo extends StatefulWidget {
 }
 
 class _SnackBarDemoState extends State<SnackBarDemo> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
