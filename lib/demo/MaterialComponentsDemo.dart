@@ -4,6 +4,7 @@ import 'AlertDialogDemo.dart';
 import 'BottomSheetDemo.dart';
 import 'CheckboxDemo.dart';
 import 'DateTimeDemo.dart';
+import 'ExpansionPanelDemo.dart';
 import 'FormDemo.dart';
 import 'PopupMenuButtonDemo.dart';
 import 'RadioDemo.dart';
@@ -31,6 +32,9 @@ class MaterialComponentsDemo extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListItem(
+            title: "收缩面板ExpansionPanelDemo",
+            page: ExpansionPanelDemo(),
+          ),      ListItem(
             title: "操作提示栏SnackBarDemo",
             page: SnackBarDemo(),
           ), ListItem(
