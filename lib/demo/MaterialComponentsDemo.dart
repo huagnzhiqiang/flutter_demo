@@ -9,6 +9,7 @@ import 'PopupMenuButtonDemo.dart';
 import 'RadioDemo.dart';
 import 'SimpleDialogDemo.dart';
 import 'SliderDemo.dart';
+import 'SnackBarDemo.dart';
 import 'SwitchDemo.dart';
 
 /*
@@ -30,6 +31,9 @@ class MaterialComponentsDemo extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListItem(
+            title: "操作提示栏SnackBarDemo",
+            page: SnackBarDemo(),
+          ), ListItem(
             title: "底部滑动窗口BottomSheetDemo",
             page: BottomSheetDemo(),
           ),
