@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'AlertDialogDemo.dart';
+import 'BottomSheetDemo.dart';
 import 'CheckboxDemo.dart';
 import 'DateTimeDemo.dart';
 import 'FormDemo.dart';
@@ -28,6 +29,10 @@ class MaterialComponentsDemo extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
+          ListItem(
+            title: "底部滑动窗口BottomSheetDemo",
+            page: BottomSheetDemo(),
+          ),
           ListItem(
             title: "显示提示对话框AlertDialogDemo",
             page: AlertDialogDemo(),
