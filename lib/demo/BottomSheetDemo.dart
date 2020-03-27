@@ -22,7 +22,7 @@ class _BottomSheetDemoState extends State<BottomSheetDemo> {
     return Scaffold(
       key: bottomSheetKey,
       appBar: AppBar(
-        title: Text("显示提示对话框"),
+        title: Text("显示底部滑动窗口"),
       ),
       body: Container(
         padding: EdgeInsets.all(10),
@@ -36,10 +36,13 @@ class _BottomSheetDemoState extends State<BottomSheetDemo> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                RaisedButton(
+                FlatButton(
                   onPressed: _openBottomSheet,
-                  child: Text("打开提示对话框选择"),
+                  child: Text("openBottomSheet"),
                 ),
+                FlatButton(
+                    onPressed: _openModelBottomSheet,
+                    child: Text("openModelBottomSheet"))
               ],
             )
           ],
@@ -63,13 +66,43 @@ class _BottomSheetDemoState extends State<BottomSheetDemo> {
             ),
             Text("小强"),
             Expanded(
-                child: Text(
-              "小强",
-              textAlign: TextAlign.right,
-            ))
+              child: Text(
+                "小强",
+                textAlign: TextAlign.right,
+              ),
+            )
           ],
         ),
       );
     });
+  }
+
+  void _openModelBottomSheet() {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            color: Colors.black26.withOpacity(0.1),
+            height: 300.0,
+            width: double.infinity,
+            padding: EdgeInsets.all(16),
+            child: Column(
+              children: <Widget>[
+                ListTile(
+                  title: Text("选项1"),
+                ),
+                ListTile(
+                  title: Text("选项2"),
+                ),
+                ListTile(
+                  title: Text("选项3"),
+                ),
+                ListTile(
+                  title: Text("选项4"),
+                ),
+              ],
+            ),
+          );
+        });
   }
 }
