@@ -16,6 +16,9 @@ class ChipDemo extends StatefulWidget {
 
 class _ChipDemoState extends State<ChipDemo> {
   List<String> list = ["Apple", "Banana", "Lemon"];
+
+  var _action = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,6 +86,31 @@ class _ChipDemoState extends State<ChipDemo> {
                         deleteIcon: Icon(Icons.delete),
                         deleteIconColor: Colors.red,
                         deleteButtonTooltipMessage: "长按删除",
+                        avatar: CircleAvatar(
+                          backgroundImage: NetworkImage(
+                              "https://resources.ninghao.org/images/overkill.png"),
+                        ),
+                      );
+                    }).toList(),
+                  ),
+                  Divider(
+                    color: Colors.orange,
+                    height: 20.0,
+                    indent: 15.0,
+                  ),
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
+                    child: Text("选择后的:$_action"),
+                  ),
+                  Wrap(
+                    children: list.map((String data) {
+                      return ActionChip(
+                        label: Text(data),
+                        onPressed: () {
+                          setState(() {
+                            _action = data;
+                          });
+                        },
                         avatar: CircleAvatar(
                           backgroundImage: NetworkImage(
                               "https://resources.ninghao.org/images/overkill.png"),
