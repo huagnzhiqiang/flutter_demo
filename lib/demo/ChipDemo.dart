@@ -49,7 +49,22 @@ class _ChipDemoState extends State<ChipDemo> {
                         "https://resources.ninghao.org/images/overkill.png"),
                   ),
                 ),
-                Divider(color: Colors.orange,height: 20.0,indent: 15.0,)
+                Divider(
+                  color: Colors.orange,
+                  height: 20.0,
+                  indent: 15.0,
+                ),
+                Chip(
+                  label: Text("删除演示"),
+                  onDeleted: () {},
+                  deleteIcon: Icon(Icons.delete),
+                  deleteIconColor: Colors.red,
+                  deleteButtonTooltipMessage: "长按删除",
+                  avatar: CircleAvatar(
+                    backgroundImage: NetworkImage(
+                        "https://resources.ninghao.org/images/overkill.png"),
+                  ),
+                ),
               ],
             )
           ],
