@@ -26,18 +26,14 @@ class _ChipDemoState extends State<ChipDemo> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Row(
+            Wrap(
+              spacing: 10.0,
+              runSpacing: 10.0,
               children: <Widget>[
                 Chip(label: Text("小强")),
-                SizedBox(
-                  width: 10.0,
-                ),
                 Chip(
                   label: Text("小强"),
                   backgroundColor: Colors.orange,
-                ),
-                SizedBox(
-                  width: 10.0,
                 ),
                 Chip(
                   label: Text("小强"),
@@ -45,9 +41,6 @@ class _ChipDemoState extends State<ChipDemo> {
                     backgroundColor: Colors.orange,
                     child: Text("强"),
                   ),
-                ),
-                SizedBox(
-                  width: 10.0,
                 ),
                 Chip(
                   label: Text("小强"),
