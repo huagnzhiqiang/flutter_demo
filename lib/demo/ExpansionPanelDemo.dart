@@ -102,7 +102,7 @@ class _ExpansionPanelDemoState extends State<ExpansionPanelDemo> {
 
 class ExpansionPanelItem {
   final String headText;
-   bool isExpanded;
+  bool isExpanded;
   final Widget body;
 
   ExpansionPanelItem(this.headText, this.isExpanded, this.body);

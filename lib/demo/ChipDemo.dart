@@ -21,6 +21,8 @@ class _ChipDemoState extends State<ChipDemo> {
 
   var _selectList = [];
 
+  var _choice = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +32,7 @@ class _ChipDemoState extends State<ChipDemo> {
         body: Container(
           padding: EdgeInsets.all(10),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: <Widget>[
               Wrap(
                 spacing: 10.0,
@@ -55,14 +57,40 @@ class _ChipDemoState extends State<ChipDemo> {
                           "https://resources.ninghao.org/images/overkill.png"),
                     ),
                   ),
-                  Divider(
-                    color: Colors.orange,
-                    height: 20.0,
-                    indent: 15.0,
-                  ),
-                  Chip(
-                    label: Text("删除演示"),
-                    onDeleted: () {},
+                ],
+              ),
+              Divider(
+                color: Colors.orange,
+                height: 20.0,
+                indent: 15.0,
+              ),
+              Chip(
+                label: Text("删除演示"),
+                onDeleted: () {},
+                deleteIcon: Icon(Icons.delete),
+                deleteIconColor: Colors.red,
+                deleteButtonTooltipMessage: "长按删除",
+                avatar: CircleAvatar(
+                  backgroundImage: NetworkImage(
+                      "https://resources.ninghao.org/images/overkill.png"),
+                ),
+              ),
+              Divider(
+                color: Colors.orange,
+                height: 20.0,
+                indent: 15.0,
+              ),
+              Wrap(
+                spacing: 10.0,
+                runSpacing: 10.0,
+                children: list.map((String data) {
+                  return Chip(
+                    label: Text(data),
+                    onDeleted: () {
+                      setState(() {
+                        list.remove(data);
+                      });
+                    },
                     deleteIcon: Icon(Icons.delete),
                     deleteIconColor: Colors.red,
                     deleteButtonTooltipMessage: "长按删除",
@@ -70,102 +98,102 @@ class _ChipDemoState extends State<ChipDemo> {
                       backgroundImage: NetworkImage(
                           "https://resources.ninghao.org/images/overkill.png"),
                     ),
-                  ),
-                  Divider(
-                    color: Colors.orange,
-                    height: 20.0,
-                    indent: 15.0,
-                  ),
-                  Wrap(
-                    spacing: 10.0,
-                    runSpacing: 10.0,
-                    children: list.map((String data) {
-                      return Chip(
-                        label: Text(data),
-                        onDeleted: () {
-                          setState(() {
-                            list.remove(data);
-                          });
-                        },
-                        deleteIcon: Icon(Icons.delete),
-                        deleteIconColor: Colors.red,
-                        deleteButtonTooltipMessage: "长按删除",
-                        avatar: CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              "https://resources.ninghao.org/images/overkill.png"),
-                        ),
-                      );
-                    }).toList(),
-                  ),
-                  Divider(
-                    color: Colors.orange,
-                    height: 20.0,
-                    indent: 15.0,
-                  ),
-                  Container(
-                    margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
-                    child: Text("选择后的:$_action"),
-                  ),
-                  Wrap(
-                    spacing: 10.0,
-                    runSpacing: 10.0,
-                    children: list.map((String data) {
-                      return ActionChip(
-                        label: Text(data),
-                        onPressed: () {
-                          setState(() {
-                            _action = data;
-                          });
-                        },
-                        avatar: CircleAvatar(
-                          backgroundImage: NetworkImage(
-                              "https://resources.ninghao.org/images/overkill.png"),
-                        ),
-                      );
-                    }).toList(),
-                  ),
+                  );
+                }).toList(),
+              ),
+              Divider(
+                color: Colors.orange,
+                height: 20.0,
+                indent: 15.0,
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(0.0, 0.0, 0.0, 15.0),
+                child: Text("选择后的:$_action"),
+              ),
+              Wrap(
+                spacing: 10.0,
+                runSpacing: 10.0,
+                children: list.map((String data) {
+                  return ActionChip(
+                    label: Text(data),
+                    onPressed: () {
+                      setState(() {
+                        _action = data;
+                      });
+                    },
+                    avatar: CircleAvatar(
+                      backgroundImage: NetworkImage(
+                          "https://resources.ninghao.org/images/overkill.png"),
+                    ),
+                  );
+                }).toList(),
+              ),
 
-                  ///==================Filter=====================
+              //====================================================== FilterChip =========================================================
 
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Divider(
-                        color: Colors.orange,
-                        height: 20.0,
-                        indent: 15.0,
-                      ),
-                      Container(
-                        margin: EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 15.0),
-                        child: Text("Filter:$_selectList"),
-                        padding: EdgeInsets.only(bottom: 15.0),
-                      ),
-                      Wrap(
-                        spacing: 10.0,
-                        runSpacing: 10.0,
-                        children: list.map((String data) {
-                          return FilterChip(
-                            label: Text(data),
-                            selected: _selectList.contains(data),
-                            onSelected: (value) {
-                              setState(() {
-                                if (_selectList.contains(data)) {
-                                  _selectList.remove(data);
-                                } else {
-                                  _selectList.add(data);
-                                }
-                              });
-                            },
-                            avatar: CircleAvatar(
-                              backgroundImage: NetworkImage(
-                                  "https://resources.ninghao.org/images/overkill.png"),
-                            ),
-                          );
-                        }).toList(),
-                      ),
-                    ],
-                  )
-                ],
+              Divider(
+                color: Colors.orange,
+                height: 20.0,
+                indent: 15.0,
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 15.0),
+                child: Text("Filter:$_selectList"),
+                padding: EdgeInsets.only(bottom: 15.0),
+              ),
+              Wrap(
+                spacing: 10.0,
+                runSpacing: 10.0,
+                children: list.map((String data) {
+                  return FilterChip(
+                    label: Text(data),
+                    selected: _selectList.contains(data),
+                    onSelected: (value) {
+                      setState(() {
+                        if (_selectList.contains(data)) {
+                          _selectList.remove(data);
+                        } else {
+                          _selectList.add(data);
+                        }
+                      });
+                    },
+                    avatar: CircleAvatar(
+                      backgroundImage: NetworkImage(
+                          "https://resources.ninghao.org/images/overkill.png"),
+                    ),
+                  );
+                }).toList(),
+              ),
+
+              //====================================================== ChoiceChip =========================================================
+              Divider(
+                color: Colors.orange,
+                height: 20.0,
+                indent: 15.0,
+              ),
+              Container(
+                margin: EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 15.0),
+                child: Text("Choice:$_choice"),
+                padding: EdgeInsets.only(bottom: 15.0),
+              ),
+              Wrap(
+                spacing: 10.0,
+                runSpacing: 10.0,
+                children: list.map((String data) {
+                  return ChoiceChip(
+                    label: Text(data),
+                    selected: _choice == data,
+                    onSelected: (value) {
+                      setState(() {
+                        _choice = data;
+                      });
+                    },
+                    avatar: CircleAvatar(
+                      backgroundImage: NetworkImage(
+                          "https://resources.ninghao.org/images/overkill.png"),
+                    ),
+                  );
+                }).toList(),
               ),
             ],
           ),
@@ -175,6 +203,7 @@ class _ChipDemoState extends State<ChipDemo> {
               setState(() {
                 list = ["Apple", "Banana", "Lemon"];
                 _selectList = [];
+                _choice = "";
               });
             },
             child: Icon(Icons.restore)));
