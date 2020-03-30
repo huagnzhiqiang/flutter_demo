@@ -17,6 +17,37 @@ class ExpansionPanelDemo extends StatefulWidget {
 class _ExpansionPanelDemoState extends State<ExpansionPanelDemo> {
   var _isExpanded = false;
 
+  List<ExpansionPanelItem> _expansionPanelItem;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _expansionPanelItem = <ExpansionPanelItem>[
+      ExpansionPanelItem(
+          "收缩面板1",
+          false,
+          Container(
+            padding: EdgeInsets.all(20),
+            child: Text("收缩面板"),
+          )),
+      ExpansionPanelItem(
+          "收缩面板2",
+          false,
+          Container(
+            padding: EdgeInsets.all(20),
+            child: Text("收缩面板"),
+          )),
+      ExpansionPanelItem(
+          "收缩面板3",
+          false,
+          Container(
+            padding: EdgeInsets.all(20),
+            child: Text("收缩面板"),
+          )),
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,10 +62,22 @@ class _ExpansionPanelDemoState extends State<ExpansionPanelDemo> {
             ExpansionPanelList(
               expansionCallback: (int panelIndex, bool isExpanded) {
                 setState(() {
-                  _isExpanded = !isExpanded;
+                  _expansionPanelItem[panelIndex].isExpanded = !isExpanded;
                 });
               },
-              children: [
+              children: _expansionPanelItem.map((ExpansionPanelItem item) {
+                return ExpansionPanel(
+                  body: item.body,
+                  isExpanded: item.isExpanded,
+                  headerBuilder: (BuildContext context, bool isExpanded) {
+                    return Container(
+                      padding: EdgeInsets.all(20),
+                      child: Text("收缩面板"),
+                    );
+                  },
+                );
+              }).toList(),
+              /*children: [
                 ExpansionPanel(
                   headerBuilder: (BuildContext context, bool isExpanded) {
                     return Container(
@@ -48,11 +91,19 @@ class _ExpansionPanelDemoState extends State<ExpansionPanelDemo> {
                   ),
                   isExpanded: _isExpanded,
                 )
-              ],
+              ],*/
             )
           ],
         ),
       ),
     );
   }
+}
+
+class ExpansionPanelItem {
+  final String headText;
+   bool isExpanded;
+  final Widget body;
+
+  ExpansionPanelItem(this.headText, this.isExpanded, this.body);
 }
