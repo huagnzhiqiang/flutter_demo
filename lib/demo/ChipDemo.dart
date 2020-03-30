@@ -19,6 +19,8 @@ class _ChipDemoState extends State<ChipDemo> {
 
   var _action = "";
 
+  var _selectList = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -75,6 +77,8 @@ class _ChipDemoState extends State<ChipDemo> {
                     indent: 15.0,
                   ),
                   Wrap(
+                    spacing: 10.0,
+                    runSpacing: 10.0,
                     children: list.map((String data) {
                       return Chip(
                         label: Text(data),
@@ -103,6 +107,8 @@ class _ChipDemoState extends State<ChipDemo> {
                     child: Text("选择后的:$_action"),
                   ),
                   Wrap(
+                    spacing: 10.0,
+                    runSpacing: 10.0,
                     children: list.map((String data) {
                       return ActionChip(
                         label: Text(data),
@@ -117,6 +123,47 @@ class _ChipDemoState extends State<ChipDemo> {
                         ),
                       );
                     }).toList(),
+                  ),
+
+                  ///==================Filter=====================
+
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Divider(
+                        color: Colors.orange,
+                        height: 20.0,
+                        indent: 15.0,
+                      ),
+                      Container(
+                        margin: EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 15.0),
+                        child: Text("Filter:$_selectList"),
+                        padding: EdgeInsets.only(bottom: 15.0),
+                      ),
+                      Wrap(
+                        spacing: 10.0,
+                        runSpacing: 10.0,
+                        children: list.map((String data) {
+                          return FilterChip(
+                            label: Text(data),
+                            selected: _selectList.contains(data),
+                            onSelected: (value) {
+                              setState(() {
+                                if (_selectList.contains(data)) {
+                                  _selectList.remove(data);
+                                } else {
+                                  _selectList.add(data);
+                                }
+                              });
+                            },
+                            avatar: CircleAvatar(
+                              backgroundImage: NetworkImage(
+                                  "https://resources.ninghao.org/images/overkill.png"),
+                            ),
+                          );
+                        }).toList(),
+                      ),
+                    ],
                   )
                 ],
               ),
@@ -127,6 +174,7 @@ class _ChipDemoState extends State<ChipDemo> {
             onPressed: () {
               setState(() {
                 list = ["Apple", "Banana", "Lemon"];
+                _selectList = [];
               });
             },
             child: Icon(Icons.restore)));
