@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'AlertDialogDemo.dart';
 import 'BottomSheetDemo.dart';
 import 'CheckboxDemo.dart';
+import 'ChipDemo.dart';
 import 'DateTimeDemo.dart';
 import 'ExpansionPanelDemo.dart';
 import 'FormDemo.dart';
@@ -32,12 +33,18 @@ class MaterialComponentsDemo extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListItem(
+            title: "小碎片ChipDemo",
+            page: ChipDemo(),
+          ),
+          ListItem(
             title: "收缩面板ExpansionPanelDemo",
             page: ExpansionPanelDemo(),
-          ),      ListItem(
+          ),
+          ListItem(
             title: "操作提示栏SnackBarDemo",
             page: SnackBarDemo(),
-          ), ListItem(
+          ),
+          ListItem(
             title: "底部滑动窗口BottomSheetDemo",
             page: BottomSheetDemo(),
           ),
