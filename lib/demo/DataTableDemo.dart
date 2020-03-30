@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_demo/model/Post.dart';
+import 'package:flutter_demo/model/Post.dart';
 /*
  * @author 小强
  *
@@ -22,8 +24,7 @@ class _DataTableDemoState extends State<DataTableDemo> {
       ),
       body: Container(
         padding: EdgeInsets.all(10),
-        width: double.infinity,
-        child: Column(
+        child: ListView(
           children: <Widget>[
             DataTable(
               columns: [
@@ -33,39 +34,18 @@ class _DataTableDemoState extends State<DataTableDemo> {
                 DataColumn(
                   label: Text("Author"),
                 ),
-              ],
-              rows: [
-                DataRow(
-                  cells: [
-                    DataCell(Text("hello ~")),
-                    DataCell(Text("小强")),
-                  ],
-                ),
-                DataRow(
-                  cells: [
-                    DataCell(Text("hello ~")),
-                    DataCell(Text("小强")),
-                  ],
-                ),
-                DataRow(
-                  cells: [
-                    DataCell(Text("hello ~")),
-                    DataCell(Text("小强")),
-                  ],
-                ),
-                DataRow(
-                  cells: [
-                    DataCell(Text("hello ~")),
-                    DataCell(Text("小强")),
-                  ],
-                ),
-                DataRow(
-                  cells: [
-                    DataCell(Text("hello ~")),
-                    DataCell(Text("小强")),
-                  ],
+                DataColumn(
+                  label: Text("Image"),
                 ),
               ],
+              rows: posts.map((post) {
+                return DataRow(cells: [
+                  DataCell(Text(post.title)),
+                  DataCell(Text(post.author)),
+                  DataCell(Image.network(post.imageUrl))
+                ]
+                );
+              }).toList(),
             )
           ],
         ),
