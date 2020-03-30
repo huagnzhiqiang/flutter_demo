@@ -4,6 +4,7 @@ import 'AlertDialogDemo.dart';
 import 'BottomSheetDemo.dart';
 import 'CheckboxDemo.dart';
 import 'ChipDemo.dart';
+import 'DataTableDemo.dart';
 import 'DateTimeDemo.dart';
 import 'ExpansionPanelDemo.dart';
 import 'FormDemo.dart';
@@ -32,6 +33,10 @@ class MaterialComponentsDemo extends StatelessWidget {
       ),
       body: ListView(
         children: <Widget>[
+          ListItem(
+            title: "数据表格DataTableDemo",
+            page: DataTableDemo(),
+          ),
           ListItem(
             title: "小碎片ChipDemo",
             page: ChipDemo(),
