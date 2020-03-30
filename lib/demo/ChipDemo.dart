@@ -49,6 +49,7 @@ class _ChipDemoState extends State<ChipDemo> {
                         "https://resources.ninghao.org/images/overkill.png"),
                   ),
                 ),
+                Divider(color: Colors.orange,height: 20.0,indent: 15.0,)
               ],
             )
           ],
