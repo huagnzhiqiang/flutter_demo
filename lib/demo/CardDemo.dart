@@ -30,9 +30,17 @@ class _CardDemoState extends State<CardDemo> {
                 Card(
                   child: Column(
                     children: <Widget>[
-                      Image.network(
-                        post.imageUrl,
-                        fit: BoxFit.fill,
+                      AspectRatio(
+                        aspectRatio: 16 / 9,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(4),
+                              topRight: Radius.circular(4)),
+                          child: Image.network(
+                            post.imageUrl,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                       ),
                       ListTile(
                         leading: CircleAvatar(
