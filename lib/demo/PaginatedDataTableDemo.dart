@@ -34,31 +34,15 @@ class _PaginatedDataTableDemoState extends State<PaginatedDataTableDemo> {
         child: ListView(
           children: <Widget>[
             PaginatedDataTable(
-              sortColumnIndex: _sortColumnIndex,
-              sortAscending: _sortAscending,
-              header: Text("分页显示表格数据"),
-              source: _postDataSource,
-              //每一页显示多少条
+              sortColumnIndex: _sortColumnIndex, sortAscending: _sortAscending,
+              header: Text("分页显示表格数据"), source: _postDataSource, //每一页显示多少条
               rowsPerPage: 5,
               columns: [
                 DataColumn(
                   label: Text("Title"),
                   onSort: (int columnIndex, bool ascending) {
-                    setState(() {
-                      _sortColumnIndex = columnIndex;
-                      _sortAscending = ascending;
-
-                      //numbers.sort((a, b) => a.length.compareTo(b.length));
-                      posts.sort((a, b) {
-                        if (!ascending) {
-                          final c = a;
-                          a = b;
-                          b = c;
-                        }
-
-                        return a.title.length.compareTo(b.title.length);
-                      });
-                    });
+                    _postDataSource._sort(
+                        (Post post) => post.title.length, ascending);
                   },
                 ),
                 DataColumn(
@@ -68,24 +52,6 @@ class _PaginatedDataTableDemoState extends State<PaginatedDataTableDemo> {
                   label: Text("Image"),
                 ),
               ],
-              /*rows: posts.map((post) {
-                return DataRow(
-                    selected: post.selected,
-                    onSelectChanged: (value) {
-
-                      print(value);
-                      setState(() {
-                        if (post.selected != value) {
-                          post.selected = value;
-                        }
-                      });
-                    },
-                    cells: [
-                      DataCell(Text(post.title)),
-                      DataCell(Text(post.author)),
-                      DataCell(Image.network(post.imageUrl))
-                    ]);
-              }).toList(),*/
             )
           ],
         ),
@@ -94,9 +60,8 @@ class _PaginatedDataTableDemoState extends State<PaginatedDataTableDemo> {
   }
 }
 
-class PostsDataSource  extends DataTableSource {
-
-   var _list = posts;
+class PostsDataSource extends DataTableSource {
+  var _list = posts;
   @override
   DataRow getRow(int index) {
     return DataRow(cells: [
@@ -115,5 +80,19 @@ class PostsDataSource  extends DataTableSource {
   @override
   int get selectedRowCount => 0;
 
+  void _sort(getField(Post post), bool ascending) {
+    _list.sort((a, b) {
+      if (!ascending) {
+        final c = a;
+        a = b;
+        b = c;
+      }
 
+      var aValue = getField(a);
+      var bValue = getField(b);
+
+      return Comparable.compare(aValue, bValue);
+    });
+    notifyListeners();
+  }
 }
