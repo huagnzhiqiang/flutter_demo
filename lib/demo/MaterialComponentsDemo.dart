@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'AlertDialogDemo.dart';
 import 'BottomSheetDemo.dart';
+import 'CardDemo.dart';
 import 'CheckboxDemo.dart';
 import 'ChipDemo.dart';
 import 'DataTableDemo.dart';
@@ -35,9 +36,14 @@ class MaterialComponentsDemo extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListItem(
+            title: "卡片CardDemo",
+            page: CardDemo(),
+          ),
+          ListItem(
             title: "分页显示表格数据PaginatedDataTableDemo",
             page: PaginatedDataTableDemo(),
-          ),  ListItem(
+          ),
+          ListItem(
             title: "数据表格DataTableDemo",
             page: DataTableDemo(),
           ),
@@ -165,13 +171,10 @@ class ButtonDemo extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
                 OutlineButton(
-                  onPressed: () {},
-                  child: Text("小强"),
-                  //点击的渐变颜色
+                  onPressed: () {}, child: Text("小强"), //点击的渐变颜色
                   splashColor: Colors.yellow,
                   borderSide: BorderSide(color: Colors.red, width: 0.5),
-                  shape: StadiumBorder(),
-                  //边框的渐变颜色
+                  shape: StadiumBorder(), //边框的渐变颜色
                   highlightedBorderColor: Colors.yellow,
                 ),
                 SizedBox(
@@ -190,13 +193,10 @@ class ButtonDemo extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                     child: OutlineButton(
-                  onPressed: () {},
-                  child: Text("小强"),
-                  //点击的渐变颜色
+                  onPressed: () {}, child: Text("小强"), //点击的渐变颜色
                   splashColor: Colors.yellow,
                   borderSide: BorderSide(color: Colors.red, width: 0.5),
-                  shape: StadiumBorder(),
-                  //边框的渐变颜色
+                  shape: StadiumBorder(), //边框的渐变颜色
                   highlightedBorderColor: Colors.yellow,
                 )),
                 SizedBox(
@@ -205,13 +205,10 @@ class ButtonDemo extends StatelessWidget {
                 Expanded(
                     flex: 2,
                     child: OutlineButton(
-                      onPressed: () {},
-                      child: Text("小强"),
-                      //点击的渐变颜色
+                      onPressed: () {}, child: Text("小强"), //点击的渐变颜色
                       splashColor: Colors.yellow,
                       borderSide: BorderSide(color: Colors.red, width: 0.5),
-                      shape: OutlineInputBorder(),
-                      //边框的渐变颜色
+                      shape: OutlineInputBorder(), //边框的渐变颜色
                       highlightedBorderColor: Colors.yellow,
                     )),
               ],
