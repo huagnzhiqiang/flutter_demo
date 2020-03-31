@@ -8,6 +8,7 @@ import 'DataTableDemo.dart';
 import 'DateTimeDemo.dart';
 import 'ExpansionPanelDemo.dart';
 import 'FormDemo.dart';
+import 'PaginatedDataTableDemo.dart';
 import 'PopupMenuButtonDemo.dart';
 import 'RadioDemo.dart';
 import 'SimpleDialogDemo.dart';
@@ -34,6 +35,9 @@ class MaterialComponentsDemo extends StatelessWidget {
       body: ListView(
         children: <Widget>[
           ListItem(
+            title: "分页显示表格数据PaginatedDataTableDemo",
+            page: PaginatedDataTableDemo(),
+          ),  ListItem(
             title: "数据表格DataTableDemo",
             page: DataTableDemo(),
           ),
