@@ -16,6 +16,12 @@ class DataTableDemo extends StatefulWidget {
 }
 
 class _DataTableDemoState extends State<DataTableDemo> {
+  //索引
+  var _sortColumnIndex = 0;
+
+  //是否升序
+  var _sortAscending = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,9 +33,29 @@ class _DataTableDemoState extends State<DataTableDemo> {
         child: ListView(
           children: <Widget>[
             DataTable(
+              sortColumnIndex: _sortColumnIndex,
+              sortAscending: _sortAscending,
               columns: [
                 DataColumn(
                   label: Text("Title"),
+                  onSort: (int columnIndex, bool ascending) {
+                    setState(() {
+                      _sortColumnIndex = columnIndex;
+                      _sortAscending = ascending;
+
+                      //numbers.sort((a, b) => a.length.compareTo(b.length));
+                      posts.sort((a, b) {
+                        if (!ascending) {
+                          final c = a;
+                          a = b;
+                          b = c;
+                        }
+
+                        return a.title.length.compareTo(b.title.length);
+                      });
+
+                    });
+                  },
                 ),
                 DataColumn(
                   label: Text("Author"),
@@ -43,8 +69,7 @@ class _DataTableDemoState extends State<DataTableDemo> {
                   DataCell(Text(post.title)),
                   DataCell(Text(post.author)),
                   DataCell(Image.network(post.imageUrl))
-                ]
-                );
+                ]);
               }).toList(),
             )
           ],
