@@ -9,17 +9,27 @@ import 'package:flutter/material.dart';
  *
  */
 
-class StateManagementDemo extends StatelessWidget {
-    final count = 0;
+class StateManagementDemo extends StatefulWidget {
+
+    @override
+    State<StatefulWidget> createState() => _StateManagementDemo();
+}
+
+class _StateManagementDemo extends State<StateManagementDemo> {
+    var _count = 0;
 
     @override
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(title: Text("状态管理"),),
             body: Center(
-                child: Chip(label: Text("$count")),
+                child: Chip(label: Text("$_count")),
             ),
-            floatingActionButton: FloatingActionButton(onPressed: () {}, child: Icon(Icons.add),),
+            floatingActionButton: FloatingActionButton(onPressed: () {
+                setState(() {
+                    _count += 1;
+                });
+            }, child: Icon(Icons.add),),
         );
     }
 }
