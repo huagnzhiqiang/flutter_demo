@@ -28,13 +28,28 @@ class _StateManagementDemo extends State<StateManagementDemo> {
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(title: Text("状态管理"),),
-            body: Counter(_count, setOnPressed),
+            body: CounterWrapper(_count, setOnPressed),
             floatingActionButton: FloatingActionButton(
                 onPressed: setOnPressed, child: Icon(Icons.add),),
         );
     }
 }
 
+
+class CounterWrapper extends StatelessWidget {
+    final int count;
+
+    final VoidCallback setOnPressed;
+
+    CounterWrapper(this.count, this.setOnPressed);
+
+    @override
+    Widget build(BuildContext context) {
+        return Center(
+            child: Counter(count, setOnPressed),
+        );
+    }
+}
 
 class Counter extends StatelessWidget {
     final int count;
