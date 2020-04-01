@@ -22,9 +22,7 @@ class _StateManagementDemo extends State<StateManagementDemo> {
     Widget build(BuildContext context) {
         return Scaffold(
             appBar: AppBar(title: Text("状态管理"),),
-            body: Center(
-                child: Chip(label: Text("$_count")),
-            ),
+            body: Counter(_count),
             floatingActionButton: FloatingActionButton(onPressed: () {
                 setState(() {
                     _count += 1;
@@ -32,4 +30,19 @@ class _StateManagementDemo extends State<StateManagementDemo> {
             }, child: Icon(Icons.add),),
         );
     }
+}
+
+class Counter extends StatelessWidget {
+  final int count ;
+
+
+  Counter(this.count);
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return Center(
+        child: Chip(label: Text("$count")),
+    );
+  }
 }
