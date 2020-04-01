@@ -26,42 +26,62 @@ class _StateManagementDemo extends State<StateManagementDemo> {
 
     @override
     Widget build(BuildContext context) {
-        return Scaffold(
-            appBar: AppBar(title: Text("状态管理"),),
-            body: CounterWrapper(_count, setOnPressed),
-            floatingActionButton: FloatingActionButton(
-                onPressed: setOnPressed, child: Icon(Icons.add),),
-        );
+        return CounterProvider(_count, setOnPressed,
+            Scaffold(
+                appBar: AppBar(title: Text("状态管理"),),
+                body: CounterWrapper(),
+                floatingActionButton: FloatingActionButton(
+                    onPressed: setOnPressed, child: Icon(Icons.add),),
+            ));
     }
 }
 
 
 class CounterWrapper extends StatelessWidget {
-    final int count;
 
-    final VoidCallback setOnPressed;
-
-    CounterWrapper(this.count, this.setOnPressed);
 
     @override
     Widget build(BuildContext context) {
         return Center(
-            child: Counter(count, setOnPressed),
+            child: Counter(),
         );
     }
 }
 
 class Counter extends StatelessWidget {
-    final int count;
 
-    final VoidCallback setOnPressed;
-
-    Counter(this.count, this.setOnPressed);
 
     @override
     Widget build(BuildContext context) {
+
+        final int count = CounterProvider
+            .of(context)
+            .count;
+
+        final VoidCallback setOnPressed = CounterProvider
+            .of(context)
+            .setOnPressed;
+
         return Center(
             child: ActionChip(label: Text("$count"), onPressed: setOnPressed,),
         );
     }
+}
+
+class CounterProvider extends InheritedWidget {
+
+    final int count;
+
+    final VoidCallback setOnPressed;
+
+    final Widget child;
+
+
+    CounterProvider(this.count, this.setOnPressed, this.child) :super(child: child);
+
+    @override
+    bool updateShouldNotify(InheritedWidget oldWidget) => true;
+
+    static CounterProvider of(BuildContext context) =>
+        context.inheritFromWidgetOfExactType(CounterProvider);
 }
