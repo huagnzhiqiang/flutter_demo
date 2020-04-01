@@ -14,6 +14,8 @@ class StepperDemo extends StatefulWidget {
 }
 
 class _StepperDemoState extends State<StepperDemo> {
+  var _currentStep = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,12 +26,50 @@ class _StepperDemoState extends State<StepperDemo> {
         padding: EdgeInsets.all(10),
         child: Column(
           children: <Widget>[
-            Stepper(steps: [
-              Step(title: Text("小强"), content: Text("内容"), subtitle: Text("子标题")),
-              Step(title: Text("小强"), content: Text("内容"), subtitle: Text("子标题")),
-              Step(title: Text("小强"), content: Text("内容"), subtitle: Text("子标题")),
-              Step(title: Text("小强"), content: Text("内容"), subtitle: Text("子标题")),
-            ]),
+            Stepper(
+              currentStep: _currentStep,
+              onStepContinue: () {
+                setState(() {
+                  _currentStep < 3 ? ++_currentStep : _currentStep = 0;
+                });
+              },
+              onStepCancel: () {
+                setState(() {
+                  _currentStep > 0 ? --_currentStep :  _currentStep = 0;
+                });
+              },
+              steps: [
+                Step(
+                  title: Text("小强"),
+                  content: Text("内容"),
+                  subtitle: Text("子标题"),
+                  isActive: _currentStep == 0,
+                ),
+                Step(
+                  title: Text("小强"),
+                  content: Text("内容"),
+                  subtitle: Text("子标题"),
+                  isActive: _currentStep == 1,
+                ),
+                Step(
+                  title: Text("小强"),
+                  content: Text("内容"),
+                  subtitle: Text("子标题"),
+                  isActive: _currentStep == 2,
+                ),
+                Step(
+                  title: Text("小强"),
+                  content: Text("内容"),
+                  subtitle: Text("子标题"),
+                  isActive: _currentStep == 3,
+                ),
+              ],
+              onStepTapped: (int value) {
+                setState(() {
+                  _currentStep = value;
+                });
+              },
+            ),
           ],
         ),
       ),
