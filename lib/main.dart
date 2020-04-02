@@ -1,111 +1,152 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+import 'demo/BasicDemo.dart';
+import 'demo/BottomNavigationBarDemo.dart';
+import 'demo/DraberMode.dart';
+import 'demo/FormDemo.dart';
+import 'demo/LayoutDemo.dart';
+import 'demo/ListViewDemo.dart';
+import 'demo/MaterialComponentsDemo.dart';
+import 'demo/NavigatorDemo.dart';
+import 'demo/SliverDemo.dart';
+import 'demo/ViewDemo.dart';
+import 'demo/state/StateManagementDemo.dart';
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
+/*
+ * @author 小强
+ *
+ * @time 2020/3/16  8:49
+ *
+ * @desc 主入口
+ *
+ */
+void main() => runApp(App());
+
+class App extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+        return MaterialApp(
+            //将右上角debug样式去掉
+            debugShowCheckedModeBanner: false,
+
+            //主题
+            theme: ThemeData(
+                primaryColor: Colors.yellow,
+                highlightColor: Color.fromRGBO(255, 255, 255, 0.5),
+                splashColor: Colors.white30,
+                accentColor: Colors.orange),
+
+            //主题颜色字体
+            home: Home(),
+            //初始化路由
+//      initialRoute: "/小强",
+            routes: {
+//        "/": (context) => NavigatorDemo(),
+                "/小强": (context) =>
+                    Page(
+                        title: "小强",
+                    )
+            },
+        );
+    }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+/// ==================主题=====================
+class Home extends StatelessWidget {
+    @override
+    Widget build(BuildContext context) {
+        return DefaultTabController(
+            length: 9,
+            child: Scaffold(
+                backgroundColor: Colors.grey[100],
+                appBar: AppBar(
+                    bottom: TabBar(
+                        tabs: <Widget>[
+                            Tab(
+                                icon: Icon(Icons.compare),
+                            ), Tab(
+                                icon: Icon(Icons.account_balance),
+                            ),
+                            Tab(
+                                icon: Icon(Icons.account_balance),
+                            ),
+                            Tab(
+                                icon: Icon(Icons.account_balance),
+                            ),
+                            Tab(
+                                icon: Icon(Icons.accessibility),
+                            ),
+                            Tab(
+                                icon: Icon(Icons.account_balance_wallet),
+                            ),
+                            Tab(
+                                icon: Icon(Icons.view_agenda),
+                            ),
+                            Tab(
+                                icon: Icon(Icons.list),
+                            ),
+                            Tab(
+                                icon: Icon(Icons.list),
+                            ),
+                        ],
+                        //指示器高度
+                        indicatorWeight: 1,
+                        //根据指示器大小
+                        indicatorSize: TabBarIndicatorSize.label,
+                        //指示器颜色
+                        indicatorColor: Colors.black26,
+                        //图标的颜色
+                        unselectedLabelColor: Colors.black45,
+                    ),
+                    //左上角的按钮
+                    //              leading: IconButton(
+                    //                  icon: Icon(Icons.menu), onPressed: () => debugPrint("菜单")),
 
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
+                    //右上角的搜索
+                    actions: <Widget>[
+                        IconButton(
+                            icon: Icon(Icons.search), onPressed: () => debugPrint("搜索"))
+                    ],
 
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
+                    //阴影
+                    elevation: 0,
+                    centerTitle: true,
+                    title: Text("小强",
+                        textDirection: TextDirection.ltr,
+                        style: TextStyle(fontSize: 40, color: Colors.green))),
 
-  final String title;
+                //主题下面的内容
+                //      body: Hello(),
 
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
+                body: TabBarView(
+                    children: <Widget>[
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+                        StateManagementDemo(),
 
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+                        MaterialComponentsDemo(),
 
-  @override
-  Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
+                        FormDemo(),
+
+                        ListViewDemo(),
+
+                        BasicDemo(),
+//            Icon(Icons.accessibility,size: 120,color: Colors.blue,),
+                        LayoutDemo(),
+
+                        ViewDemo(),
+
+                        SliverDemo(),
+
+                        NavigatorDemo(),
+                    ],
+                ),
+
+                //抽屉
+                drawer: DrawerMode(),
+
+                //导航栏
+                bottomNavigationBar: BottomNavigationBarDemo(),
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.display1,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
-  }
+        );
+    }
 }
