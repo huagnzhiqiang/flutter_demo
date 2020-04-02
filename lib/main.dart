@@ -9,6 +9,7 @@ import 'demo/ListViewDemo.dart';
 import 'demo/MaterialComponentsDemo.dart';
 import 'demo/NavigatorDemo.dart';
 import 'demo/SliverDemo.dart';
+import 'demo/StreamDemo.dart';
 import 'demo/ViewDemo.dart';
 import 'demo/state/StateManagementDemo.dart';
 
@@ -56,15 +57,19 @@ class Home extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
         return DefaultTabController(
-            length: 9,
+            length: 10,
             child: Scaffold(
                 backgroundColor: Colors.grey[100],
                 appBar: AppBar(
                     bottom: TabBar(
                         tabs: <Widget>[
                             Tab(
+                                icon: Icon(Icons.airline_seat_legroom_extra),
+                            ),
+                            Tab(
                                 icon: Icon(Icons.compare),
-                            ), Tab(
+                            ),
+                            Tab(
                                 icon: Icon(Icons.account_balance),
                             ),
                             Tab(
@@ -120,6 +125,8 @@ class Home extends StatelessWidget {
 
                 body: TabBarView(
                     children: <Widget>[
+
+                        StreamDemo(),
 
                         StateManagementDemo(),
 
