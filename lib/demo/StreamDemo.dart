@@ -36,7 +36,7 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
         Stream<String> _stream = new Stream.fromFuture(fetchDate());
 
-        _stream.listen(onData);
+        _stream.listen(onData, onDone: onDone, onError: onError);
     }
 
     @override
@@ -53,5 +53,13 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
     void onData(String event) {
         print(event);
+    }
+
+    onError(error) {
+        print("onError-->$error");
+    }
+
+    void onDone() {
+        print("onDone");
     }
 }
