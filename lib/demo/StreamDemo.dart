@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
  *
  * @time 2020/4/2  9:55
  *
- * @desc 
+ * @desc
  *
  */
 
@@ -31,16 +31,22 @@ class StreamDemoHome extends StatefulWidget {
 
 class _StreamDemoHomeState extends State<StreamDemoHome> {
 
-    StreamSubscription<String> _streamSubscription;
+    StreamSubscription _streamSubscription;
 
+    StreamController<String> _streamDemo;
 
     @override
     void initState() {
         super.initState();
-
+        _streamDemo =   StreamController<String>();
         Stream<String> _stream = new Stream.fromFuture(fetchDate());
+        _streamSubscription = _streamDemo.stream.listen(onData, onDone: onDone, onError: onError);
+    }
 
-        _streamSubscription = _stream.listen(onData, onDone: onDone, onError: onError);
+    @override
+    void dispose() {
+        _streamDemo.close();
+        super.dispose();
     }
 
     @override
@@ -48,6 +54,7 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
         return Container(
             child: Row(
                 children: <Widget>[
+                    FlatButton(onPressed: _addStream, child: Text("add")),
                     FlatButton(onPressed: _pauseStream, child: Text("pause")),
                     FlatButton(onPressed: _resumeStream, child: Text("resume")),
                     FlatButton(onPressed: _cancelStream, child: Text("cancel")),
@@ -59,7 +66,6 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
     Future<String> fetchDate() async {
         await Future.delayed(Duration(seconds: 3));
-
         return "小强";
     }
 
@@ -91,5 +97,10 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     void _cancelStream() {
         print("取消");
         _streamSubscription.cancel();
+    }
+
+    void _addStream() async {
+        var data = await fetchDate();
+        _streamDemo.add(data);
     }
 }
