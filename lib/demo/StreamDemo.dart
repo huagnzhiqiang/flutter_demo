@@ -37,6 +37,8 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
     StreamSink _sink;
 
+    String _data = "...";
+
     @override
     void initState() {
         super.initState();
@@ -58,15 +60,24 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
     @override
     Widget build(BuildContext context) {
         return Container(
-            child: Row(
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                    FlatButton(onPressed: _addStream, child: Text("add")),
-                    FlatButton(onPressed: _pauseStream, child: Text("pause")),
-                    FlatButton(onPressed: _resumeStream, child: Text("resume")),
-                    FlatButton(onPressed: _cancelStream, child: Text("cancel")),
+                  Text(_data),
+                    Row(
+                        children: <Widget>[
+                            FlatButton(onPressed: _addStream, child: Text("add")),
+                            FlatButton(onPressed: _pauseStream, child: Text("pause")),
+                            FlatButton(onPressed: _resumeStream, child: Text("resume")),
+                            FlatButton(onPressed: _cancelStream, child: Text("cancel")),
 
-                ],
-            ),
+                        ],
+                    )
+                    ,
+                ]
+                ,
+            )
+            ,
         );
     }
 
@@ -77,6 +88,9 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
     void onData(String event) {
         print(event);
+        setState(() {
+            _data = event;
+        });
     }
 
     void onDataTow(String event) {
