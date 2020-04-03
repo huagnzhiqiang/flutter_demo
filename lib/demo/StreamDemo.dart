@@ -63,7 +63,11 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Text(_data),
+//                  Text(_data),
+                    StreamBuilder(initialData: "...",
+                        builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+                            return Text("${snapshot.data}");
+                        },stream: _streamDemo.stream,),
                     Row(
                         children: <Widget>[
                             FlatButton(onPressed: _addStream, child: Text("add")),
