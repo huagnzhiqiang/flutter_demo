@@ -35,10 +35,13 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
     StreamController<String> _streamDemo;
 
+  StreamSink _sink;
+
     @override
     void initState() {
         super.initState();
         _streamDemo =   StreamController<String>();
+         _sink = _streamDemo.sink;
         Stream<String> _stream = new Stream.fromFuture(fetchDate());
         _streamSubscription = _streamDemo.stream.listen(onData, onDone: onDone, onError: onError);
     }
@@ -101,6 +104,6 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
     void _addStream() async {
         var data = await fetchDate();
-        _streamDemo.add(data);
+        _sink.add(data);
     }
 }
