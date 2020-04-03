@@ -35,15 +35,18 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
     StreamController<String> _streamDemo;
 
-  StreamSink _sink;
+    StreamSink _sink;
 
     @override
     void initState() {
         super.initState();
-        _streamDemo =   StreamController<String>();
-         _sink = _streamDemo.sink;
+        _streamDemo = StreamController.broadcast();
+        _sink = _streamDemo.sink;
         Stream<String> _stream = new Stream.fromFuture(fetchDate());
+
         _streamSubscription = _streamDemo.stream.listen(onData, onDone: onDone, onError: onError);
+        _streamSubscription =
+            _streamDemo.stream.listen(onDataTow, onDone: onDone, onError: onError);
     }
 
     @override
@@ -74,6 +77,10 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
     void onData(String event) {
         print(event);
+    }
+
+    void onDataTow(String event) {
+        print("tow:$event");
     }
 
     onError(error) {
