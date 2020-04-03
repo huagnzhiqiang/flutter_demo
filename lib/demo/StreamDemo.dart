@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 /*
  * @author 小强
@@ -29,6 +31,8 @@ class StreamDemoHome extends StatefulWidget {
 
 class _StreamDemoHomeState extends State<StreamDemoHome> {
 
+    StreamSubscription<String> _streamSubscription;
+
 
     @override
     void initState() {
@@ -36,12 +40,20 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
         Stream<String> _stream = new Stream.fromFuture(fetchDate());
 
-        _stream.listen(onData, onDone: onDone, onError: onError);
+        _streamSubscription = _stream.listen(onData, onDone: onDone, onError: onError);
     }
 
     @override
     Widget build(BuildContext context) {
         return Container(
+            child: Row(
+                children: <Widget>[
+                    FlatButton(onPressed: _pauseStream, child: Text("pause")),
+                    FlatButton(onPressed: _resumeStream, child: Text("resume")),
+                    FlatButton(onPressed: _cancelStream, child: Text("cancel")),
+
+                ],
+            ),
         );
     }
 
@@ -61,5 +73,23 @@ class _StreamDemoHomeState extends State<StreamDemoHome> {
 
     void onDone() {
         print("onDone");
+    }
+
+    //暂停
+    void _pauseStream() {
+        print("暂停");
+        _streamSubscription.pause();
+    }
+
+    //重置
+    void _resumeStream() {
+        print("重置");
+        _streamSubscription.resume();
+    }
+
+    //取消
+    void _cancelStream() {
+        print("取消");
+        _streamSubscription.cancel();
     }
 }
