@@ -6,7 +6,7 @@ import 'package:flutter_demo/demo/bloc/CounterHome.dart';
  *
  * @time 2020/9/22  13:58
  *
- * @desc 
+ * @desc Bloc
  *
  */
 
@@ -22,4 +22,5 @@ class BlocDemo extends StatelessWidget {
       ),
     );
   }
+
 }
