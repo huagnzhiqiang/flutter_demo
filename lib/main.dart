@@ -11,6 +11,7 @@ import 'demo/NavigatorDemo.dart';
 import 'demo/SliverDemo.dart';
 import 'demo/StreamDemo.dart';
 import 'demo/ViewDemo.dart';
+import 'demo/rxDart/RxDartDemo.dart';
 import 'demo/state/StateManagementDemo.dart';
 
 /*
@@ -57,42 +58,23 @@ class Home extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
         return DefaultTabController(
-            length: 10,
+            length: 11,
             child: Scaffold(
                 backgroundColor: Colors.grey[100],
                 appBar: AppBar(
                     bottom: TabBar(
                         tabs: <Widget>[
-                            Tab(
-                                icon: Icon(Icons.airline_seat_legroom_extra),
-                            ),
-                            Tab(
-                                icon: Icon(Icons.compare),
-                            ),
-                            Tab(
-                                icon: Icon(Icons.account_balance),
-                            ),
-                            Tab(
-                                icon: Icon(Icons.account_balance),
-                            ),
-                            Tab(
-                                icon: Icon(Icons.account_balance),
-                            ),
-                            Tab(
-                                icon: Icon(Icons.accessibility),
-                            ),
-                            Tab(
-                                icon: Icon(Icons.account_balance_wallet),
-                            ),
-                            Tab(
-                                icon: Icon(Icons.view_agenda),
-                            ),
-                            Tab(
-                                icon: Icon(Icons.list),
-                            ),
-                            Tab(
-                                icon: Icon(Icons.list),
-                            ),
+                            Tab(icon: Icon(Icons.add),),
+                            Tab(icon: Icon(Icons.close),),
+                            Tab(icon: Icon(Icons.event),),
+                            Tab(icon: Icon(Icons.pause),),
+                            Tab(icon: Icon(Icons.title),),
+                            Tab(icon: Icon(Icons.print),),
+                            Tab(icon: Icon(Icons.sort),),
+                            Tab(icon: Icon(Icons.event),),
+                            Tab(icon: Icon(Icons.delete),),
+                            Tab(icon: Icon(Icons.arrow_drop_down),),
+                            Tab(icon: Icon(Icons.signal_wifi_off),),
                         ],
                         //指示器高度
                         indicatorWeight: 1,
@@ -125,6 +107,8 @@ class Home extends StatelessWidget {
 
                 body: TabBarView(
                     children: <Widget>[
+
+                        RxDartDemo(),
 
                         StreamDemo(),
 
