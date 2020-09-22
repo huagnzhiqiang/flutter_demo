@@ -11,6 +11,7 @@ import 'demo/NavigatorDemo.dart';
 import 'demo/SliverDemo.dart';
 import 'demo/StreamDemo.dart';
 import 'demo/ViewDemo.dart';
+import 'demo/bloc/BlocDemo.dart';
 import 'demo/rxDart/RxDartDemo.dart';
 import 'demo/state/StateManagementDemo.dart';
 
@@ -42,12 +43,11 @@ class App extends StatelessWidget {
             home: Home(),
             //初始化路由
 //      initialRoute: "/小强",
+//       initialRoute: "/bloc",
             routes: {
 //        "/": (context) => NavigatorDemo(),
-                "/小强": (context) =>
-                    Page(
-                        title: "小强",
-                    )
+                "/小强": (context) =>Page(title: "小强",)
+//                 "/bloc": (context) =>BlocDemo()
             },
         );
     }
@@ -58,12 +58,13 @@ class Home extends StatelessWidget {
     @override
     Widget build(BuildContext context) {
         return DefaultTabController(
-            length: 11,
+            length: 12,
             child: Scaffold(
                 backgroundColor: Colors.grey[100],
                 appBar: AppBar(
                     bottom: TabBar(
                         tabs: <Widget>[
+                            Tab(icon: Icon(Icons.map),),
                             Tab(icon: Icon(Icons.add),),
                             Tab(icon: Icon(Icons.close),),
                             Tab(icon: Icon(Icons.event),),
@@ -107,6 +108,8 @@ class Home extends StatelessWidget {
 
                 body: TabBarView(
                     children: <Widget>[
+
+                        BlocDemo(),
 
                         RxDartDemo(),
 
